@@ -7,9 +7,3 @@ pages_build_output_dir = "dist/apps/ferry"
 [build]
 command = "npm install --force && npm run build"
 cwd = "."
-
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-
