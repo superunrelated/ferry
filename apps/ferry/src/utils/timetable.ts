@@ -74,15 +74,21 @@ export function getAllDepartures(
       if (from && route.from !== from) continue;
       if (to && route.to !== to) continue;
 
-      for (const [dayGroup, times] of Object.entries(route.schedule)) {
-        for (const time of times) {
+      // Convert DaySchedule to FerryDeparture[]
+      const days: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+      for (const day of days) {
+        const sailings = route.schedule[day];
+        if (!sailings || !Array.isArray(sailings)) continue;
+
+        for (const sailing of sailings) {
+          if (!sailing || !sailing.time) continue;
+          
           departures.push({
-            time,
-            company: timetable.company,
+            time: sailing.time,
+            company: sailing.company,
             from: route.from,
             to: route.to,
-            notes: route.notes,
-            dayGroup: dayGroup as DayGroup,
+            dayGroup: getDayGroupForDayOfWeek(day),
           });
         }
       }
@@ -90,6 +96,23 @@ export function getAllDepartures(
   }
 
   return departures;
+}
+
+function getDayGroupForDayOfWeek(day: DayOfWeek): DayGroup {
+  switch (day) {
+    case 'monday':
+    case 'tuesday':
+      return 'monday-tuesday';
+    case 'wednesday':
+      return 'wednesday';
+    case 'thursday':
+    case 'friday':
+      return 'wednesday-friday';
+    case 'saturday':
+      return 'saturday';
+    case 'sunday':
+      return 'sunday';
+  }
 }
 
 export function getRemainingSailingsToday(
@@ -186,7 +209,42 @@ export function getNextFerries(
   count: number = 3
 ): FerryDeparture[] {
   const remaining = getRemainingSailingsToday(timetables, from);
-  return remaining.slice(0, count);
+  
+  // Convert Sailing[] to FerryDeparture[] by finding the route for each sailing
+  const departures: FerryDeparture[] = [];
+  
+  for (const sailing of remaining.slice(0, count)) {
+    // Find the route that contains this sailing
+    for (const timetable of timetables) {
+      for (const route of timetable.routes) {
+        if (route.from !== from) continue;
+        
+        // Check if this sailing exists in this route's schedule
+        const days: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        for (const day of days) {
+          const daySailings = route.schedule[day];
+          if (daySailings?.some(s => s.time === sailing.time && s.company === sailing.company)) {
+            departures.push({
+              time: sailing.time,
+              company: sailing.company,
+              from: route.from,
+              to: route.to,
+              dayGroup: getDayGroupForDayOfWeek(day),
+            });
+            break;
+          }
+        }
+        if (departures.length > 0 && departures[departures.length - 1].time === sailing.time) {
+          break;
+        }
+      }
+      if (departures.length > 0 && departures[departures.length - 1].time === sailing.time) {
+        break;
+      }
+    }
+  }
+  
+  return departures;
 }
 
 export function isSlowSailing(sailing: Sailing): boolean {
