@@ -1,0 +1,14 @@
+# React Component Rules
+
+## Component Design Rules
+
+### No className Props
+**Rule**: No custom libs component should accept `className` as a prop.
+
+**Rationale**: 
+- Components in the UI library should have consistent, predefined styling
+- Allowing `className` props creates inconsistency and makes components harder to maintain
+- If customization is needed, use variant props or composition patterns instead
+
+**Exceptions**: None. All UI library components must follow this rule.
+

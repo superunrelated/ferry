@@ -5,8 +5,7 @@ import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { useLocation } from '../hooks/useLocation';
 import { useTimetable } from '../hooks/useTimetable';
 import { getRemainingSailingsToday, isSlowSailing } from '../utils/timetable';
-import { TabNavigation } from '@ferry/ui';
-import { CompanyFilter } from '@ferry/ui';
+import { TabNavigation, CompanyFilter, Card, CardHeader, CardContent } from '@ferry/ui';
 import { Sailing, FerryCompany, Location } from '../types/timetable';
 
 export function HomePage() {
@@ -133,12 +132,9 @@ export function HomePage() {
               <div className="text-slate-400">No more sailings today</div>
             </div>
           ) : (
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700/50 overflow-hidden">
-              <div className="px-6 py-4 bg-gradient-to-r from-slate-800/80 to-slate-700/80 border-b border-slate-700/50">
+            <Card>
+              <CardHeader>
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                    Sailings from {departureLocation} today
-                  </h2>
                   {detectedLocation &&
                     departureLocation !== detectedLocation && (
                       <button
@@ -181,8 +177,8 @@ export function HomePage() {
                     onChange={setFilterCompany}
                   />
                 </div>
-              </div>
-              <div className="overflow-x-auto">
+              </CardHeader>
+              <CardContent>
                 <table className="w-full">
                   <thead className="bg-slate-800/30">
                     <tr>
@@ -213,8 +209,8 @@ export function HomePage() {
                             <span
                               className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
                                 isFullers
-                                  ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                                  : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                                  ? 'bg-fullers/20 text-fullers border border-fullers/40'
+                                  : 'bg-island-direct/20 text-island-direct border border-island-direct/40'
                               }`}
                             >
                               {sailing.company}
@@ -232,8 +228,8 @@ export function HomePage() {
                     })}
                   </tbody>
                 </table>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           )}
         </div>
       </div>

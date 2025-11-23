@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { TimetableData } from '../types/timetable';
 
 export function useTimetable() {
-  const [timetableData, setTimetableData] = useState<TimetableData | null>(null);
+  const [timetableData, setTimetableData] = useState<TimetableData | null>(
+    null
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,14 +18,25 @@ export function useTimetable() {
 
         if (response?.ok) {
           const data = await response.json();
-          console.log('Timetable data loaded:', data, 'routes:', data?.routes?.length);
+          console.log(
+            'Timetable data loaded:',
+            data,
+            'routes:',
+            data?.routes?.length
+          );
           setTimetableData(data);
         } else {
-          console.log('Timetable response not ok:', response?.status, response?.statusText);
+          console.log(
+            'Timetable response not ok:',
+            response?.status,
+            response?.statusText
+          );
           setError('Failed to load timetable data');
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load timetable');
+        setError(
+          err instanceof Error ? err.message : 'Failed to load timetable'
+        );
       } finally {
         setLoading(false);
       }
@@ -41,4 +54,3 @@ export function useTimetable() {
     error,
   };
 }
-

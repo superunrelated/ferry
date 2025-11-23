@@ -14,6 +14,16 @@ module.exports = {
         ...blackA,
         ...mauve,
         ...violet,
+        'island-direct': {
+          DEFAULT: 'rgb(223, 99, 58)',
+          light: 'rgb(223, 99, 58)',
+          dark: 'rgb(200, 85, 45)',
+        },
+        'fullers': {
+          DEFAULT: 'rgb(0, 150, 144)',
+          light: 'rgb(0, 150, 144)',
+          dark: 'rgb(0, 130, 124)',
+        },
       },
     },
   },
