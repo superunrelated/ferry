@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import * as Label from '@radix-ui/react-label';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { useLocation } from '../hooks/useLocation';
 import { useTimetable } from '../hooks/useTimetable';
 import { TabNavigation } from '@ferry/ui';
@@ -44,10 +47,18 @@ export function TimetablePage() {
     }
   }, [detectedLocation]);
 
+  // Show error dialog when error occurs
+  useEffect(() => {
+    if (error) {
+      setShowErrorDialog(true);
+    }
+  }, [error]);
+
   const loading = timetableLoading || locationLoading;
   const nextSailingRef = useRef<HTMLTableRowElement>(null);
   const currentDayHeaderRef = useRef<HTMLTableCellElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
 
   // Get current time and day
   const now = new Date();
@@ -180,96 +191,117 @@ export function TimetablePage() {
   }, [loading, nextSailingTime, timeSlots.length, currentDayOfWeek]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <TabNavigation />
       <div className="p-4">
         <div className="max-w-7xl mx-auto">
-          {error && (
-            <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-sm text-yellow-800 mb-2">
-                {error.includes('denied')
-                  ? 'Location access denied. Please enable location services to see ferries from your location.'
-                  : 'Unable to get your location.'}
-              </p>
-              <button
-                onClick={requestLocation}
-                className="text-sm text-yellow-900 underline"
-              >
-                Try again
-              </button>
-            </div>
-          )}
+          <AlertDialog.Root open={showErrorDialog} onOpenChange={setShowErrorDialog}>
+            <AlertDialog.Portal>
+              <AlertDialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
+              <AlertDialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 p-6 max-w-md w-full z-50">
+                <AlertDialog.Title className="text-lg font-bold text-slate-100 mb-2">
+                  Location Error
+                </AlertDialog.Title>
+                <AlertDialog.Description className="text-sm text-slate-300 mb-6">
+                  {error?.includes('denied')
+                    ? 'Location access denied. Please enable location services to see ferries from your location.'
+                    : 'Unable to get your location.'}
+                </AlertDialog.Description>
+                <div className="flex gap-3 justify-end">
+                  <AlertDialog.Cancel asChild>
+                    <button
+                      onClick={() => setShowErrorDialog(false)}
+                      className="px-4 py-2 text-sm font-medium rounded-lg bg-slate-700 text-slate-200 hover:bg-slate-600 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </AlertDialog.Cancel>
+                  <AlertDialog.Action asChild>
+                    <button
+                      onClick={() => {
+                        setShowErrorDialog(false);
+                        requestLocation();
+                      }}
+                      className="px-4 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg shadow-cyan-500/20"
+                    >
+                      Try again
+                    </button>
+                  </AlertDialog.Action>
+                </div>
+              </AlertDialog.Content>
+            </AlertDialog.Portal>
+          </AlertDialog.Root>
 
           {loading ? (
-            <div className="text-center py-8">
-              <div className="text-gray-600">Loading...</div>
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-slate-600 border-t-cyan-400"></div>
+              <div className="text-slate-400 mt-4">Loading...</div>
             </div>
           ) : !detectedLocation ? (
-            <div className="text-center py-8">
-              <div className="text-gray-600">
+            <div className="text-center py-12">
+              <div className="text-slate-400">
                 Unable to determine your location
               </div>
             </div>
           ) : (
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-lg font-semibold">
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700/50 overflow-hidden">
+              <div className="px-6 py-4 bg-gradient-to-r from-slate-800/80 to-slate-700/80 border-b border-slate-700/50">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                     Timetable from {departureLocation}
                   </h2>
                   {detectedLocation &&
                     departureLocation !== detectedLocation && (
                       <button
                         onClick={() => setDepartureLocation(detectedLocation)}
-                        className="text-sm text-blue-600 hover:text-blue-800 underline"
+                        className="text-sm text-cyan-400 hover:text-cyan-300 underline transition-colors"
                       >
                         Show from {detectedLocation}
                       </button>
                     )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Label.Root className="block text-sm font-semibold text-slate-300 mb-2">
                     Departure Location
-                  </label>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => setDepartureLocation('Auckland')}
-                      className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        departureLocation === 'Auckland'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                      }`}
+                  </Label.Root>
+                  <ToggleGroup.Root
+                    type="single"
+                    value={departureLocation || undefined}
+                    onValueChange={(value) => {
+                      if (value) setDepartureLocation(value as Location);
+                    }}
+                    className="inline-flex gap-1 rounded-lg bg-slate-900/50 p-1 w-full border border-slate-700/50"
+                  >
+                    <ToggleGroup.Item
+                      value="Auckland"
+                      className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
                     >
                       Auckland
-                    </button>
-                    <button
-                      onClick={() => setDepartureLocation('Waiheke')}
-                      className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        departureLocation === 'Waiheke'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                      }`}
+                    </ToggleGroup.Item>
+                    <ToggleGroup.Item
+                      value="Waiheke"
+                      className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
                     >
                       Waiheke
-                    </button>
-                  </div>
+                    </ToggleGroup.Item>
+                  </ToggleGroup.Root>
                 </div>
               </div>
               <div ref={scrollContainerRef} className="overflow-auto max-h-[calc(100vh-200px)]">
                 <table className="w-full border-collapse">
-                  <thead className="bg-gray-50 sticky top-0 z-20">
+                  <thead className="bg-slate-800/80 backdrop-blur-sm sticky top-0 z-20 border-b border-slate-700/50">
                     <tr>
-                      <th className="sticky left-0 z-30 bg-gray-50 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-r border-gray-300">
+                      <th className="sticky left-0 z-30 bg-slate-800/95 backdrop-blur-sm px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-r-2 border-slate-700/50">
                         Time
                       </th>
                       {DAYS.map((day, index) => (
                         <th
                           key={day}
                           ref={day === currentDayOfWeek ? currentDayHeaderRef : null}
-                          className={`px-4 py-3 text-center text-xs font-medium uppercase tracking-wider border-b border-gray-200 ${
+                          className={`px-6 py-4 text-center text-xs font-bold uppercase tracking-wider border-b border-slate-700/50 ${
                             day === currentDayOfWeek
-                              ? 'bg-blue-100 text-blue-800 font-bold'
-                              : 'text-gray-500 bg-gray-50'
+                              ? 'bg-gradient-to-b from-cyan-500/20 to-blue-500/20 text-cyan-300 font-bold border-cyan-500/30'
+                              : 'text-slate-400 bg-slate-800/80'
                           }`}
                         >
                           {DAY_LABELS[index]}
@@ -277,7 +309,7 @@ export function TimetablePage() {
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="divide-y divide-slate-700/30">
                     {hourGroups.map((group, groupIndex) => (
                       <React.Fragment key={group.hour}>
                         {group.slots.map((slot, slotIndex) => {
@@ -287,13 +319,13 @@ export function TimetablePage() {
                             <tr
                               key={slot.time}
                               ref={isNextSailing ? nextSailingRef : null}
-                              className={`group ${
+                              className={`group hover:bg-slate-800/20 transition-colors ${
                                 isFirstInHour && groupIndex > 0
-                                  ? 'border-t-2 border-gray-400'
+                                  ? 'border-t-2 border-slate-600/50'
                                   : ''
                               }`}
                             >
-                              <td className="sticky left-0 z-10 bg-white group-hover:bg-gray-50 px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 border-r-2 border-gray-300">
+                              <td className="sticky left-0 z-10 bg-slate-800/95 backdrop-blur-sm group-hover:bg-slate-700/50 px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-200 border-r-2 border-slate-700/50">
                                 {slot.time}
                               </td>
                               {DAYS.map((day) => {
@@ -303,40 +335,43 @@ export function TimetablePage() {
                                 return (
                                   <td
                                     key={day}
-                                    className={`px-4 py-3 text-center text-sm border-r border-gray-200 last:border-r-0 bg-white ${
-                                      isCurrentDay ? 'bg-blue-50' : ''
+                                    className={`px-6 py-4 text-center text-sm border-r border-slate-700/30 last:border-r-0 ${
+                                      isCurrentDay ? 'bg-slate-800/30' : 'bg-slate-900/30'
                                     } ${
                                       isNextSailingOnCurrentDay
-                                        ? 'bg-yellow-200 border-l-4 border-l-yellow-500'
+                                        ? 'bg-gradient-to-r from-yellow-500/30 to-orange-500/30 border-l-4 border-l-yellow-400 shadow-lg shadow-yellow-500/20'
                                         : ''
                                     }`}
                                   >
                                     {daySailings.length > 0 ? (
-                                      <div className="space-y-1">
-                                        {daySailings.map((sailing, idx) => (
-                                          <div
-                                            key={idx}
-                                            className={`inline-block px-2 py-1 rounded text-xs ${
-                                              sailing.company === 'Fullers'
-                                                ? 'bg-blue-100 text-blue-800'
-                                                : 'bg-green-100 text-green-800'
-                                            } ${
-                                              sailing.slow
-                                                ? 'border border-orange-400'
-                                                : ''
-                                            }`}
-                                          >
-                                            {sailing.company}
-                                            {sailing.slow && (
-                                              <span className="ml-1 text-orange-600">
-                                                (slow)
-                                              </span>
-                                            )}
-                                          </div>
-                                        ))}
+                                      <div className="space-y-1.5">
+                                        {daySailings.map((sailing, idx) => {
+                                          const isFullers = sailing.company === 'Fullers';
+                                          return (
+                                            <div
+                                              key={idx}
+                                              className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
+                                                isFullers
+                                                  ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                                                  : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                                              } ${
+                                                sailing.slow
+                                                  ? 'ring-2 ring-orange-400/50'
+                                                  : ''
+                                              }`}
+                                            >
+                                              {sailing.company}
+                                              {sailing.slow && (
+                                                <span className="ml-1.5 text-orange-400 text-[10px]">
+                                                  (slow)
+                                                </span>
+                                              )}
+                                            </div>
+                                          );
+                                        })}
                                       </div>
                                     ) : (
-                                      <span className="text-gray-300">-</span>
+                                      <span className="text-slate-600">-</span>
                                     )}
                                   </td>
                                 );

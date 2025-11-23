@@ -1,7 +1,6 @@
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
+import * as Label from '@radix-ui/react-label';
 import { FerryCompany } from '../types/timetable';
-
-
 
 export interface CompanyFilterProps {
   value: FerryCompany | 'all';
@@ -11,9 +10,9 @@ export interface CompanyFilterProps {
 export function CompanyFilter({ value, onChange }: CompanyFilterProps) {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700 mb-2">
+      <Label.Root className="block text-sm font-semibold text-slate-300 mb-2">
         Company
-      </label>
+      </Label.Root>
       <ToggleGroup.Root
         type="single"
         value={value}
@@ -22,23 +21,23 @@ export function CompanyFilter({ value, onChange }: CompanyFilterProps) {
             onChange(newValue as FerryCompany | 'all');
           }
         }}
-        className="inline-flex space-x-px rounded bg-mauve6 shadow-[0_2px_10px] shadow-blackA4 w-full"
+        className="inline-flex gap-1 rounded-lg bg-slate-800/50 p-1 w-full border border-slate-700/50"
       >
         <ToggleGroup.Item
           value="all"
-          className="flex-1 px-3 py-2 text-sm font-medium leading-4 bg-white text-mauve11 first:rounded-l last:rounded-r hover:bg-violet3 focus:z-10 focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none data-[state=on]:bg-violet6 data-[state=on]:text-violet12"
+          className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
         >
-          Both companies
+          All
         </ToggleGroup.Item>
         <ToggleGroup.Item
           value="Fullers"
-          className="flex-1 px-3 py-2 text-sm font-medium leading-4 bg-white text-mauve11 first:rounded-l last:rounded-r hover:bg-violet3 focus:z-10 focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none data-[state=on]:bg-violet6 data-[state=on]:text-violet12"
+          className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-blue-500/20 data-[state=on]:to-blue-600/20 data-[state=on]:text-blue-300 data-[state=on]:shadow-lg data-[state=on]:shadow-blue-500/20"
         >
           Fullers
         </ToggleGroup.Item>
         <ToggleGroup.Item
           value="Island Direct"
-          className="flex-1 px-3 py-2 text-sm font-medium leading-4 bg-white text-mauve11 first:rounded-l last:rounded-r hover:bg-violet3 focus:z-10 focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none data-[state=on]:bg-violet6 data-[state=on]:text-violet12"
+          className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-emerald-500/20 data-[state=on]:to-green-500/20 data-[state=on]:text-emerald-300 data-[state=on]:shadow-lg data-[state=on]:shadow-emerald-500/20"
         >
           Island Direct
         </ToggleGroup.Item>
