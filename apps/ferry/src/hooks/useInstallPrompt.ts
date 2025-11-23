@@ -33,11 +33,15 @@ export function useInstallPrompt() {
 
     // Listen for beforeinstallprompt event (Android/Chrome)
     const handleBeforeInstallPrompt = (e: Event) => {
+      // Prevent the default browser install prompt
+      // We'll show our custom banner instead and call prompt() when user clicks Install
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
       setIsInstallable(true);
       
-      // Show prompt after a delay
+      // Show our custom prompt banner after a delay
+      // The browser warning is expected - we're intentionally preventing default
+      // to show our custom UI, and will call prompt() when user clicks Install
       setTimeout(() => {
         setShowPrompt(true);
       }, 3000); // Show after 3 seconds
@@ -59,16 +63,23 @@ export function useInstallPrompt() {
 
   const handleInstallClick = async () => {
     if (deferredPrompt) {
-      // Show the install prompt
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      
-      if (outcome === 'accepted') {
-        setShowPrompt(false);
-        setIsInstallable(false);
+      try {
+        // Show the native browser install prompt
+        // This is called when user clicks our custom "Install" button
+        await deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          setShowPrompt(false);
+          setIsInstallable(false);
+        }
+      } catch (error) {
+        // Prompt may have already been shown or user dismissed it
+        console.log('Install prompt error:', error);
+      } finally {
+        // Clear the deferred prompt after use
+        setDeferredPrompt(null);
       }
-      
-      setDeferredPrompt(null);
     }
     
     // Mark as shown in session

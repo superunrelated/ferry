@@ -8,6 +8,8 @@
     "build:with-icons": "npm run generate-icons && npm run build",
     "start": "nx serve ferry",
     "generate-icons": "node scripts/generate-icons.js",
+    "deploy:gcs": "node scripts/deploy-gcs.js",
+    "deploy": "npm run build && npm run deploy:gcs",
     "scrape:fullers": "nx scrape-fullers scraper",
     "scrape:island-direct": "nx scrape-island-direct scraper",
     "scraper": "nx scrape-all scraper",
