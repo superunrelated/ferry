@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "nx build ferry",
+    "build:with-icons": "npm run generate-icons && npm run build",
     "start": "nx serve ferry",
     "generate-icons": "node scripts/generate-icons.js",
     "scrape:fullers": "nx scrape-fullers scraper",
@@ -49,7 +50,6 @@
     "nx": "22.1.1",
     "postcss": "^8.4.35",
     "prettier": "^2.6.2",
-    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.11",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
