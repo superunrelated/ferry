@@ -1,0 +1,50 @@
+{
+  "name": "scraper",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/scraper",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "scrape-fullers": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node apps/scraper/scrape_fullers.js",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "scrape-island-direct": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node apps/scraper/scrape_island_direct.js",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "scrape-all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node apps/scraper/scrape_fullers.js",
+          "node apps/scraper/scrape_island_direct.js",
+          "node apps/scraper/merge-data.js"
+        ],
+        "parallel": false,
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "copy-data": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node apps/scraper/copy-data.js",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "merge-data": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node apps/scraper/merge-data.js",
+        "cwd": "{workspaceRoot}"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,1429 @@
+{
+  "lastUpdated": "2025-11-23T05:54:55.462Z",
+  "routes": [
+    {
+      "from": "Auckland",
+      "to": "Waiheke",
+      "schedule": {
+        "monday": [
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "22:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:45",
+            "company": "Fullers"
+          }
+        ],
+        "tuesday": [
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "22:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:45",
+            "company": "Fullers"
+          }
+        ],
+        "wednesday": [
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "22:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:45",
+            "company": "Fullers"
+          }
+        ],
+        "thursday": [
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "22:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:45",
+            "company": "Fullers"
+          }
+        ],
+        "friday": [
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "22:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:45",
+            "company": "Fullers"
+          }
+        ],
+        "saturday": [
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "09:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "11:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "22:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:45",
+            "company": "Fullers"
+          }
+        ],
+        "sunday": [
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "09:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "11:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:45",
+            "company": "Fullers"
+          },
+          {
+            "time": "22:15",
+            "company": "Fullers"
+          }
+        ]
+      }
+    },
+    {
+      "from": "Waiheke",
+      "to": "Auckland",
+      "schedule": {
+        "monday": [
+          {
+            "time": "00:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "21:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:00",
+            "company": "Fullers"
+          }
+        ],
+        "tuesday": [
+          {
+            "time": "00:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "21:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:00",
+            "company": "Fullers"
+          }
+        ],
+        "wednesday": [
+          {
+            "time": "00:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "21:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:00",
+            "company": "Fullers"
+          }
+        ],
+        "thursday": [
+          {
+            "time": "00:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "21:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:00",
+            "company": "Fullers"
+          }
+        ],
+        "friday": [
+          {
+            "time": "00:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "06:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "21:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:00",
+            "company": "Fullers"
+          }
+        ],
+        "saturday": [
+          {
+            "time": "00:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "07:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "10:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "12:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "21:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:00",
+            "company": "Fullers"
+          }
+        ],
+        "sunday": [
+          {
+            "time": "08:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "09:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "10:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "10:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "11:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "12:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "12:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "13:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "14:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "15:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "15:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "16:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "16:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:15",
+            "company": "Fullers"
+          },
+          {
+            "time": "17:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "18:00",
+            "company": "Fullers",
+            "slow": true
+          },
+          {
+            "time": "18:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "19:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "20:00",
+            "company": "Fullers"
+          },
+          {
+            "time": "21:30",
+            "company": "Fullers"
+          },
+          {
+            "time": "23:00",
+            "company": "Fullers"
+          }
+        ]
+      }
+    }
+  ]
+}

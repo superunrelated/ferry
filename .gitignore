@@ -1,0 +1,45 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Nx
+.nx/cache
+.nx/workspace-data
+
+# misc
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Vite
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+
+# Environment
+.env
+.env.local
+.env.*.local

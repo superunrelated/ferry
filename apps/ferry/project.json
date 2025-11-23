@@ -1,0 +1,57 @@
+{
+  "name": "ferry",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ferry/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/ferry"
+      },
+      "configurations": {
+        "production": {
+          "mode": "production"
+        },
+        "development": {
+          "mode": "development"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "ferry:build",
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ferry:build:development"
+        },
+        "production": {
+          "buildTarget": "ferry:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "ferry:build:production"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "ferry:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

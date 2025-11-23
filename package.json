@@ -1,0 +1,53 @@
+{
+  "name": "ferry",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "nx build ferry",
+    "start": "nx serve ferry",
+    "scrape:fullers": "nx scrape-fullers scraper",
+    "scrape:island-direct": "nx scrape-island-direct scraper",
+    "scraper": "nx scrape-all scraper",
+    "scrape:copy-data": "nx copy-data scraper"
+  },
+  "private": true,
+  "dependencies": {
+    "@radix-ui/colors": "latest",
+    "@radix-ui/react-icons": "latest",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toggle-group": "latest",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.2",
+    "pdf-parse": "^2.4.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.29.0"
+  },
+  "devDependencies": {
+    "@nx/eslint": "22.1.1",
+    "@nx/js": "22.1.1",
+    "@nx/react": "22.1.1",
+    "@nx/vite": "22.1.1",
+    "@nx/web": "22.1.1",
+    "@nx/workspace": "22.1.1",
+    "@swc-node/register": "~1.9.1",
+    "@swc/core": "~1.5.7",
+    "@swc/helpers": "~0.5.11",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/node": "20.19.9",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "4.2.1",
+    "autoprefixer": "^10.4.17",
+    "eslint": "~8.57.0",
+    "jiti": "2.4.2",
+    "nx": "22.1.1",
+    "postcss": "^8.4.35",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^4.1.11",
+    "tslib": "^2.3.0",
+    "typescript": "~5.9.2",
+    "vite": "^7.0.0"
+  }
+}
