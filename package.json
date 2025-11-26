@@ -16,6 +16,10 @@
     "scrape:copy-data": "nx copy-data scraper"
   },
   "private": true,
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=10.0.0"
+  },
   "dependencies": {
     "@radix-ui/colors": "latest",
     "@radix-ui/react-alert-dialog": "^1.1.15",
