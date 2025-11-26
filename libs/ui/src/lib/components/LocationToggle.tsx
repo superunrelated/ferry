@@ -1,0 +1,36 @@
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
+import { Location } from '../types/timetable';
+
+export interface LocationToggleProps {
+  value: Location | null;
+  onChange: (value: Location) => void;
+}
+
+export function LocationToggle({ value, onChange }: LocationToggleProps) {
+  return (
+    <ToggleGroup.Root
+      type="single"
+      value={value || undefined}
+      onValueChange={(newValue) => {
+        if (newValue) {
+          onChange(newValue as Location);
+        }
+      }}
+      className="inline-flex gap-1 rounded-lg bg-slate-900/50 p-1 w-full border border-slate-700/50"
+    >
+      <ToggleGroup.Item
+        value="Auckland"
+        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
+      >
+        From Auckland
+      </ToggleGroup.Item>
+      <ToggleGroup.Item
+        value="Waiheke"
+        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
+      >
+        From Waiheke
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
+  );
+}
+

@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
-import * as Label from '@radix-ui/react-label';
-import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { useLocation } from '../hooks/useLocation';
 import { useTimetable } from '../hooks/useTimetable';
 import { getRemainingSailingsToday, isSlowSailing } from '../utils/timetable';
-import { TabNavigation, CompanyFilter, Card, CardHeader, CardContent } from '@ferry/ui';
+import {
+  TabNavigation,
+  CompanyFilter,
+  LocationToggle,
+  Card,
+  CardHeader,
+  CardContent,
+} from '@ferry/ui';
 import { Sailing, FerryCompany, Location } from '../types/timetable';
 
 export function HomePage() {
@@ -58,28 +63,15 @@ export function HomePage() {
 
   const loading = timetableLoading || locationLoading;
 
-  // Debug logging
-  if (departureLocation && !loading && remainingSailings.length === 0) {
-    console.log('Debug - Departure Location:', departureLocation);
-    console.log('Debug - Timetables:', timetables);
-    console.log(
-      'Debug - Current day:',
-      new Date().getDay(),
-      new Date().toLocaleDateString()
-    );
-    console.log('Debug - Current time:', new Date().toLocaleTimeString());
-    console.log(
-      'Debug - Routes found:',
-      timetables.flatMap((t) => t.routes.filter((r) => r.from === departureLocation))
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
       <TabNavigation />
       <div className="p-4">
         <div className="max-w-2xl mx-auto">
-          <AlertDialog.Root open={showErrorDialog} onOpenChange={setShowErrorDialog}>
+          <AlertDialog.Root
+            open={showErrorDialog}
+            onOpenChange={setShowErrorDialog}
+          >
             <AlertDialog.Portal>
               <AlertDialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
               <AlertDialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 p-6 max-w-md w-full z-50">
@@ -134,44 +126,12 @@ export function HomePage() {
           ) : (
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  {detectedLocation &&
-                    departureLocation !== detectedLocation && (
-                      <button
-                        onClick={swapLocation}
-                        className="text-sm text-cyan-400 hover:text-cyan-300 underline transition-colors"
-                      >
-                        Show from {detectedLocation}
-                      </button>
-                    )}
-                </div>
                 <div className="space-y-4">
-                  <div>
-                    <Label.Root className="block text-sm font-semibold text-slate-300 mb-2">
-                      Departure Location
-                    </Label.Root>
-                    <ToggleGroup.Root
-                      type="single"
-                      value={departureLocation || undefined}
-                      onValueChange={(value) => {
-                        if (value) setDepartureLocation(value as Location);
-                      }}
-                      className="inline-flex gap-1 rounded-lg bg-slate-900/50 p-1 w-full border border-slate-700/50"
-                    >
-                      <ToggleGroup.Item
-                        value="Auckland"
-                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
-                      >
-                        Auckland
-                      </ToggleGroup.Item>
-                      <ToggleGroup.Item
-                        value="Waiheke"
-                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
-                      >
-                        Waiheke
-                      </ToggleGroup.Item>
-                    </ToggleGroup.Root>
-                  </div>
+                  <LocationToggle
+                    value={departureLocation}
+                    onChange={setDepartureLocation}
+                  />
+
                   <CompanyFilter
                     value={filterCompany}
                     onChange={setFilterCompany}
@@ -218,7 +178,9 @@ export function HomePage() {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
                             {slow ? (
-                              <span className="text-orange-400 font-medium">Slow</span>
+                              <span className="text-orange-400 font-medium">
+                                Slow
+                              </span>
                             ) : (
                               <span className="text-slate-500">-</span>
                             )}

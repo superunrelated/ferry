@@ -23,7 +23,7 @@ export function Card({ children }: CardProps) {
 
 export function CardHeader({ children }: CardHeaderProps) {
   return (
-    <div className="px-6 py-4 bg-gradient-to-r from-slate-800/80 to-slate-700/80 border-b border-slate-700/50">
+    <div className="px-2 py-2 bg-linear-to-r from-slate-800/80 to-slate-700/80 border-b border-slate-700/50">
       {children}
     </div>
   );

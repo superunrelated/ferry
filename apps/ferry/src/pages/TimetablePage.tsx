@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
-import * as Label from '@radix-ui/react-label';
-import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { useLocation } from '../hooks/useLocation';
 import { useTimetable } from '../hooks/useTimetable';
-import { TabNavigation, Card, CardHeader, CardContent } from '@ferry/ui';
-import { Location, DayOfWeek, Sailing } from '../types/timetable';
+import {
+  TabNavigation,
+  LocationToggle,
+  CompanyFilter,
+  Card,
+  CardHeader,
+  CardContent,
+} from '@ferry/ui';
+import { Location, DayOfWeek, Sailing, FerryCompany } from '../types/timetable';
 
 const DAYS: DayOfWeek[] = [
   'monday',
@@ -52,6 +57,9 @@ export function TimetablePage() {
   } = useLocation();
   const locationLoading = state === 'loading';
   const { timetables, loading: timetableLoading } = useTimetable();
+  const [filterCompany, setFilterCompany] = useState<FerryCompany | 'all'>(
+    'all'
+  );
   const [departureLocation, setDepartureLocation] = useState<Location | null>(
     detectedLocation
   );
@@ -130,6 +138,17 @@ export function TimetablePage() {
     // Convert map to array and sort by time
     timeSlots.push(...Array.from(timeSlotMap.values()));
     timeSlots.sort((a, b) => a.timeInMinutes - b.timeInMinutes);
+
+    // Apply company filter
+    if (filterCompany !== 'all') {
+      for (const slot of timeSlots) {
+        for (const day of DAYS) {
+          slot.sailings[day] = slot.sailings[day].filter(
+            (s) => s.company === filterCompany
+          );
+        }
+      }
+    }
 
     // Find the next sailing time on the current day
     for (const slot of timeSlots) {
@@ -279,49 +298,23 @@ export function TimetablePage() {
           ) : (
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  {detectedLocation &&
-                    departureLocation !== detectedLocation && (
-                      <button
-                        onClick={() => setDepartureLocation(detectedLocation)}
-                        className="text-sm text-cyan-400 hover:text-cyan-300 underline transition-colors"
-                      >
-                        Show from {detectedLocation}
-                      </button>
-                    )}
-                </div>
-                <div>
-                  <Label.Root className="block text-sm font-semibold text-slate-300 mb-2">
-                    Departure Location
-                  </Label.Root>
-                  <ToggleGroup.Root
-                    type="single"
-                    value={departureLocation || undefined}
-                    onValueChange={(value) => {
-                      if (value) setDepartureLocation(value as Location);
-                    }}
-                    className="inline-flex gap-1 rounded-lg bg-slate-900/50 p-1 w-full border border-slate-700/50"
-                  >
-                    <ToggleGroup.Item
-                      value="Auckland"
-                      className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
-                    >
-                      Auckland
-                    </ToggleGroup.Item>
-                    <ToggleGroup.Item
-                      value="Waiheke"
-                      className="flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition-all text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-800 data-[state=on]:bg-gradient-to-r data-[state=on]:from-cyan-500/20 data-[state=on]:to-blue-500/20 data-[state=on]:text-cyan-300 data-[state=on]:shadow-lg data-[state=on]:shadow-cyan-500/20"
-                    >
-                      Waiheke
-                    </ToggleGroup.Item>
-                  </ToggleGroup.Root>
+                <div className="space-y-4">
+                  <LocationToggle
+                    value={departureLocation}
+                    onChange={setDepartureLocation}
+                  />
+
+                  <CompanyFilter
+                    value={filterCompany}
+                    onChange={setFilterCompany}
+                  />
                 </div>
               </CardHeader>
               <CardContent ref={scrollContainerRef} scrollable>
                 <table className="w-full border-collapse">
                   <thead className="bg-slate-800/80 backdrop-blur-sm sticky top-0 z-20 border-b border-slate-700/50">
                     <tr>
-                      <th className="sticky left-0 z-30 bg-slate-800/95 backdrop-blur-sm px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-r-2 border-slate-700/50">
+                      <th className="sticky left-0 z-30 bg-slate-800/95 backdrop-blur-sm px-1.5 py-2 text-left text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-r-2 border-slate-700/50 w-20">
                         Time
                       </th>
                       {DAYS.map((day, index) => (
@@ -359,7 +352,7 @@ export function TimetablePage() {
                                   : ''
                               }`}
                             >
-                              <td className="sticky left-0 z-10 bg-slate-800/95 backdrop-blur-sm group-hover:bg-slate-700/50 px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-200 border-r-2 border-slate-700/50">
+                              <td className="sticky left-0 z-10 bg-slate-800/95 backdrop-blur-sm group-hover:bg-slate-700/50 px-3 py-4 whitespace-nowrap text-sm font-semibold text-slate-200 border-r-2 border-slate-700/50 w-20">
                                 {slot.time}
                               </td>
                               {DAYS.map((day) => {
