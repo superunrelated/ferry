@@ -325,7 +325,7 @@ export function TimetablePage() {
                               ? currentDayHeaderRef
                               : null
                           }
-                          className={`px-6 py-4 text-center text-xs font-bold uppercase tracking-wider border-b border-slate-700/50 ${
+                          className={`px-3 py-2 text-center text-xs font-bold uppercase tracking-wider border-b border-slate-700/50 ${
                             day === currentDayOfWeek
                               ? 'bg-gradient-to-b from-cyan-500/20 to-blue-500/20 text-cyan-300 font-bold border-cyan-500/30'
                               : 'text-slate-400 bg-slate-800/80'
@@ -352,7 +352,7 @@ export function TimetablePage() {
                                   : ''
                               }`}
                             >
-                              <td className="sticky left-0 z-10 bg-slate-800/95 backdrop-blur-sm group-hover:bg-slate-700/50 px-3 py-4 whitespace-nowrap text-sm font-semibold text-slate-200 border-r-2 border-slate-700/50 w-20">
+                              <td className="sticky left-0 z-10 bg-slate-800/95 backdrop-blur-sm group-hover:bg-slate-700/50 px-1.5 py-2 whitespace-nowrap text-sm font-semibold text-slate-200 border-r-2 border-slate-700/50 w-20">
                                 {slot.time}
                               </td>
                               {DAYS.map((day) => {
@@ -363,7 +363,7 @@ export function TimetablePage() {
                                 return (
                                   <td
                                     key={day}
-                                    className={`px-6 py-4 text-center text-sm border-r border-slate-700/30 last:border-r-0 ${
+                                    className={`px-3 py-2 text-center text-sm border-r border-slate-700/30 last:border-r-0 ${
                                       isCurrentDay
                                         ? 'bg-slate-800/30'
                                         : 'bg-slate-900/30'
