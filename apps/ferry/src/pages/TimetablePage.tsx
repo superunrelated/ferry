@@ -148,6 +148,12 @@ export function TimetablePage() {
           );
         }
       }
+      // Remove time slots that have no sailings on any day
+      const filteredTimeSlots = timeSlots.filter((slot) => {
+        return DAYS.some((day) => slot.sailings[day].length > 0);
+      });
+      timeSlots.length = 0;
+      timeSlots.push(...filteredTimeSlots);
     }
 
     // Find the next sailing time on the current day
