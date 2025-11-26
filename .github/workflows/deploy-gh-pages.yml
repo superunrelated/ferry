@@ -28,10 +28,10 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: npm install --legacy-peer-deps --verbose
+        run: npm ci
       
       - name: Build ferry app
-        run: npm run build --verbose
+        run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
       
