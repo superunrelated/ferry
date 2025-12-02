@@ -2,16 +2,14 @@ import { useState, useEffect } from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { useLocation } from '../hooks/useLocation';
 import { useTimetable } from '../hooks/useTimetable';
+import { useFilters } from '../hooks/useFilters';
 import { getRemainingSailingsToday, isSlowSailing } from '../utils/timetable';
 import {
-  TabNavigation,
-  CompanyFilter,
-  LocationToggle,
   Card,
-  CardHeader,
   CardContent,
+  PageTemplate,
 } from '@ferry/ui';
-import { Sailing, FerryCompany, Location } from '../types/timetable';
+import { Sailing } from '../types/timetable';
 
 export function HomePage() {
   const {
@@ -22,20 +20,13 @@ export function HomePage() {
   } = useLocation();
   const locationLoading = state === 'loading';
   const { timetables, loading: timetableLoading } = useTimetable();
-  const [filterCompany, setFilterCompany] = useState<FerryCompany | 'all'>(
-    'all'
-  );
-  const [departureLocation, setDepartureLocation] = useState<Location | null>(
-    detectedLocation
-  );
+  const {
+    departureLocation,
+    setDepartureLocation,
+    filterCompany,
+    setFilterCompany,
+  } = useFilters();
   const [showErrorDialog, setShowErrorDialog] = useState(false);
-
-  // Update departure location when detected location changes
-  useEffect(() => {
-    if (detectedLocation) {
-      setDepartureLocation(detectedLocation);
-    }
-  }, [detectedLocation]);
 
   // Show error dialog when error occurs
   useEffect(() => {
@@ -61,13 +52,31 @@ export function HomePage() {
       ? allRemainingSailings
       : allRemainingSailings.filter((s) => s.company === filterCompany);
 
+  const groupedSailings = remainingSailings.reduce((acc, sailing) => {
+    const time = sailing.time;
+    if (!acc[time]) {
+      acc[time] = [];
+    }
+    acc[time].push(sailing);
+    return acc;
+  }, {} as Record<string, Sailing[]>);
+
+  const groupedSailingsArray = Object.entries(groupedSailings).map(([time, sailings]) => ({
+    time,
+    sailings,
+  }));
+
   const loading = timetableLoading || locationLoading;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
-      <TabNavigation />
+    <PageTemplate
+      departureLocation={departureLocation}
+      setDepartureLocation={setDepartureLocation}
+      filterCompany={filterCompany}
+      setFilterCompany={setFilterCompany}
+    >
       <div className="p-4">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <AlertDialog.Root
             open={showErrorDialog}
             onOpenChange={setShowErrorDialog}
@@ -125,19 +134,6 @@ export function HomePage() {
             </div>
           ) : (
             <Card>
-              <CardHeader>
-                <div className="space-y-4">
-                  <LocationToggle
-                    value={departureLocation}
-                    onChange={setDepartureLocation}
-                  />
-
-                  <CompanyFilter
-                    value={filterCompany}
-                    onChange={setFilterCompany}
-                  />
-                </div>
-              </CardHeader>
               <CardContent>
                 <table className="w-full">
                   <thead className="bg-slate-800/30">
@@ -148,46 +144,44 @@ export function HomePage() {
                       <th className="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">
                         Company
                       </th>
-                      <th className="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">
-                        Slow
-                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-700/50">
-                    {remainingSailings.map((sailing, index) => {
-                      const slow = isSlowSailing(sailing);
-                      const isFullers = sailing.company === 'Fullers';
-                      return (
-                        <tr
-                          key={`${sailing.company}-${sailing.time}-${index}`}
-                          className="hover:bg-slate-800/30 transition-colors"
-                        >
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-200">
-                            {sailing.time}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span
-                              className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
-                                isFullers
-                                  ? 'bg-fullers/20 text-fullers border border-fullers/40'
-                                  : 'bg-island-direct/20 text-island-direct border border-island-direct/40'
-                              }`}
-                            >
-                              {sailing.company}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
-                            {slow ? (
-                              <span className="text-orange-400 font-medium">
-                                Slow
-                              </span>
-                            ) : (
-                              <span className="text-slate-500">-</span>
-                            )}
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {groupedSailingsArray.map((group, index) => (
+                      <tr
+                        key={`${group.time}-${index}`}
+                        className="hover:bg-slate-800/30 transition-colors"
+                      >
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-200">
+                          {group.time}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex flex-wrap gap-2">
+                            {group.sailings.map((sailing, sailingIndex) => {
+                              const slow = isSlowSailing(sailing);
+                              const isFullers = sailing.company === 'Fullers';
+                              return (
+                                <span
+                                  key={`${sailing.company}-${sailing.time}-${sailingIndex}`}
+                                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
+                                    isFullers
+                                      ? 'bg-fullers/20 text-fullers border border-fullers/40'
+                                      : 'bg-island-direct/20 text-island-direct border border-island-direct/40'
+                                  }`}
+                                >
+                                  {sailing.company}
+                                  {slow && isFullers && (
+                                    <span className="ml-1.5 text-orange-400 text-[10px]">
+                                      *
+                                    </span>
+                                  )}
+                                </span>
+                              );
+                            })}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </CardContent>
@@ -195,6 +189,6 @@ export function HomePage() {
           )}
         </div>
       </div>
-    </div>
+    </PageTemplate>
   );
 }

@@ -2,15 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { useLocation } from '../hooks/useLocation';
 import { useTimetable } from '../hooks/useTimetable';
+import { useFilters } from '../hooks/useFilters';
 import {
-  TabNavigation,
-  LocationToggle,
-  CompanyFilter,
   Card,
-  CardHeader,
   CardContent,
+  PageTemplate,
 } from '@ferry/ui';
-import { Location, DayOfWeek, Sailing, FerryCompany } from '../types/timetable';
+import { DayOfWeek, Sailing } from '../types/timetable';
 
 const DAYS: DayOfWeek[] = [
   'monday',
@@ -57,19 +55,12 @@ export function TimetablePage() {
   } = useLocation();
   const locationLoading = state === 'loading';
   const { timetables, loading: timetableLoading } = useTimetable();
-  const [filterCompany, setFilterCompany] = useState<FerryCompany | 'all'>(
-    'all'
-  );
-  const [departureLocation, setDepartureLocation] = useState<Location | null>(
-    detectedLocation
-  );
-
-  // Update departure location when detected location changes
-  useEffect(() => {
-    if (detectedLocation) {
-      setDepartureLocation(detectedLocation);
-    }
-  }, [detectedLocation]);
+  const {
+    departureLocation,
+    setDepartureLocation,
+    filterCompany,
+    setFilterCompany,
+  } = useFilters();
 
   // Show error dialog when error occurs
   useEffect(() => {
@@ -246,10 +237,14 @@ export function TimetablePage() {
   }, [loading, nextSailingTime, timeSlots.length, currentDayOfWeek]);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
-      <TabNavigation />
-      <div className="p-4">
-        <div className="max-w-7xl mx-auto">
+    <PageTemplate
+      departureLocation={departureLocation}
+      setDepartureLocation={setDepartureLocation}
+      filterCompany={filterCompany}
+      setFilterCompany={setFilterCompany}
+    >
+      <div className="h-full p-4">
+        <div className="max-w-7xl mx-auto h-full">
           <AlertDialog.Root
             open={showErrorDialog}
             onOpenChange={setShowErrorDialog}
@@ -302,21 +297,8 @@ export function TimetablePage() {
               </div>
             </div>
           ) : (
-            <Card>
-              <CardHeader>
-                <div className="space-y-4">
-                  <LocationToggle
-                    value={departureLocation}
-                    onChange={setDepartureLocation}
-                  />
-
-                  <CompanyFilter
-                    value={filterCompany}
-                    onChange={setFilterCompany}
-                  />
-                </div>
-              </CardHeader>
-              <CardContent ref={scrollContainerRef} scrollable>
+            <Card className="h-full flex flex-col">
+              <CardContent ref={scrollContainerRef} scrollable className="flex-1">
                 <table className="w-full border-collapse">
                   <thead className="bg-slate-800/80 backdrop-blur-sm sticky top-0 z-20 border-b border-slate-700/50">
                     <tr>
@@ -396,7 +378,7 @@ export function TimetablePage() {
                                               {sailing.company}
                                               {sailing.slow && (
                                                 <span className="ml-1.5 text-orange-400 text-[10px]">
-                                                  (slow)
+                                                  *
                                                 </span>
                                               )}
                                             </div>
@@ -421,6 +403,6 @@ export function TimetablePage() {
           )}
         </div>
       </div>
-    </div>
+    </PageTemplate>
   );
 }

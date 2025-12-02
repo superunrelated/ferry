@@ -18,7 +18,7 @@ export function TabNavigation() {
       }}
       className="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-10 shadow-lg"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <Tabs.List className="flex">
           <Tabs.Trigger
             value="now"

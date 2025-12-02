@@ -8,7 +8,7 @@ import '../styles.css';
 // Remove trailing slash if present for React Router basename
 const basePath = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || '/';
 
-function App() {
+export default function App() {
   return (
     <>
       <BrowserRouter basename={basePath}>
@@ -21,5 +21,3 @@ function App() {
     </>
   );
 }
-
-export default App;

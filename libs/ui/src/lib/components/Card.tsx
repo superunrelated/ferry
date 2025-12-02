@@ -2,6 +2,7 @@ import { ReactNode, forwardRef } from 'react';
 
 export interface CardProps {
   children: ReactNode;
+  className?: string;
 }
 
 export interface CardHeaderProps {
@@ -11,11 +12,12 @@ export interface CardHeaderProps {
 export interface CardContentProps {
   children: ReactNode;
   scrollable?: boolean;
+  className?: string;
 }
 
-export function Card({ children }: CardProps) {
+export function Card({ children, className }: CardProps) {
   return (
-    <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700/50 overflow-hidden">
+    <div className={`bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700/50 overflow-hidden ${className || ''}`}>
       {children}
     </div>
   );
@@ -30,15 +32,15 @@ export function CardHeader({ children }: CardHeaderProps) {
 }
 
 export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
-  function CardContent({ children, scrollable = false }, ref) {
+  function CardContent({ children, scrollable = false, className }, ref) {
     return (
       <div
         ref={ref}
-        className={
+        className={`${
           scrollable
-            ? 'overflow-auto max-h-[calc(100vh-200px)]'
+            ? 'overflow-auto h-full'
             : 'overflow-x-auto'
-        }
+        } ${className || ''}`}
       >
         {children}
       </div>
