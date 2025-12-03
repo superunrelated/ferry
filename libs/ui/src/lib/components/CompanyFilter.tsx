@@ -31,7 +31,7 @@ const filterItem = cva(
 
 const filterItemVisionImpaired = {
   base: 'vision-impaired:text-base vision-impaired:font-bold vision-impaired:text-white vision-impaired:hover:bg-gray-900',
-  all: 'vision-impaired:data-[state=on]:bg-cyan-600 vision-impaired:data-[state=on]:text-white',
+  all: 'vision-impaired:data-[state=on]:bg-cyan-900 vision-impaired:data-[state=on]:text-white',
   fullers:
     'vision-impaired:data-[state=on]:bg-fullers vision-impaired:data-[state=on]:text-white',
   'island-direct':

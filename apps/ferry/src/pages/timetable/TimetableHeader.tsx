@@ -35,7 +35,7 @@ const dayHeaderCell = cva(
 const dayHeaderCellVisionImpaired = {
   base: 'vision-impaired:text-sm vision-impaired:border-white vision-impaired:border-b-2',
   current:
-    'vision-impaired:bg-cyan-600 vision-impaired:text-white vision-impaired:border-cyan-400 vision-impaired:border-b-2',
+    'vision-impaired:bg-cyan-900 vision-impaired:text-white vision-impaired:border-cyan-400 vision-impaired:border-b-2',
   default: 'vision-impaired:text-white vision-impaired:bg-black',
 };
 

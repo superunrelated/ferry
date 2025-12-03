@@ -32,7 +32,7 @@ const actionButton = cva(
   'px-4 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg shadow-cyan-500/20'
 );
 const actionButtonVisionImpaired =
-  'vision-impaired:text-base vision-impaired:font-bold vision-impaired:bg-cyan-600 vision-impaired:border-2 vision-impaired:border-white';
+  'vision-impaired:text-base vision-impaired:font-bold vision-impaired:bg-cyan-900 vision-impaired:border-2 vision-impaired:border-white';
 
 export function LocationErrorDialog({
   open,
