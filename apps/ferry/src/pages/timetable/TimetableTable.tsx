@@ -3,6 +3,7 @@ import { DayOfWeek } from '../../types/timetable';
 import { TimeSlot } from '../../utils/timetableData';
 import { TimetableHeader } from './TimetableHeader';
 import { TimetableRow } from './TimetableRow';
+import { cva, vi } from '@ferry/ui';
 
 export interface TimetableTableProps {
   hourGroups: { hour: number; slots: TimeSlot[] }[];
@@ -11,6 +12,9 @@ export interface TimetableTableProps {
   nextSailingRef: React.RefObject<HTMLTableRowElement>;
   currentDayHeaderRef: React.RefObject<HTMLTableCellElement>;
 }
+
+const tableBody = cva('divide-y divide-slate-700/30');
+const tableBodyVisionImpaired = 'vision-impaired:divide-y-2 vision-impaired:divide-white';
 
 export function TimetableTable({
   hourGroups,
@@ -25,7 +29,7 @@ export function TimetableTable({
         currentDayOfWeek={currentDayOfWeek}
         currentDayHeaderRef={currentDayHeaderRef}
       />
-      <tbody className="divide-y divide-slate-700/30 vision-impaired:divide-y-2 vision-impaired:divide-white">
+      <tbody className={vi(tableBody(), tableBodyVisionImpaired)}>
         {hourGroups.map((group, groupIndex) => (
           <React.Fragment key={group.hour}>
             {group.slots.map((slot, slotIndex) => {
