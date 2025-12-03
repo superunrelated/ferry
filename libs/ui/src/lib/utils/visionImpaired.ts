@@ -5,4 +5,3 @@ export { cva, type VariantProps };
 export function vi(...classes: (string | undefined)[]): string {
   return classes.filter(Boolean).join(' ');
 }
-

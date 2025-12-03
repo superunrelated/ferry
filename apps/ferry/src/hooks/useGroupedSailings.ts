@@ -23,4 +23,3 @@ export function useGroupedSailings(sailings: Sailing[]): GroupedSailing[] {
     }));
   }, [sailings]);
 }
-

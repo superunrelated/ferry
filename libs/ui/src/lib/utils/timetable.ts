@@ -21,4 +21,3 @@ export function formatMinutesUntil(minutes: number): string {
   }
   return `${hours} hr ${mins} min`;
 }
-

@@ -34,13 +34,14 @@ export function NextFerry({ departures, location, loading }: NextFerryProps) {
 
   return (
     <div className="space-y-3">
-      <h2 className="text-xl font-bold mb-4">
-        Next ferries from {location}
-      </h2>
+      <h2 className="text-xl font-bold mb-4">Next ferries from {location}</h2>
       {departures.map((departure, index) => (
-        <FerryCard key={`${departure.company}-${departure.time}-${index}`} departure={departure} showCountdown={index === 0} />
+        <FerryCard
+          key={`${departure.company}-${departure.time}-${index}`}
+          departure={departure}
+          showCountdown={index === 0}
+        />
       ))}
     </div>
   );
 }
-

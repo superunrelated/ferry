@@ -6,7 +6,10 @@ export interface FerryCardProps {
   showCountdown?: boolean;
 }
 
-export function FerryCard({ departure, showCountdown = false }: FerryCardProps) {
+export function FerryCard({
+  departure,
+  showCountdown = false,
+}: FerryCardProps) {
   const minutesUntil = getMinutesUntil(departure.time);
   const companyColors = {
     Fullers: 'bg-blue-100 border-blue-300 text-blue-900',
@@ -39,4 +42,3 @@ export function FerryCard({ departure, showCountdown = false }: FerryCardProps) 
     </div>
   );
 }
-

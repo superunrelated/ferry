@@ -16,11 +16,14 @@ export interface PageTemplateProps {
   setFilterCompany: (company: FerryCompany | 'all') => void;
 }
 
-const pageContainer = cva('h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden');
+const pageContainer = cva(
+  'h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden'
+);
 const pageContainerVisionImpaired = 'vision-impaired:bg-black';
 
 const footerText = cva('text-xs text-slate-500 text-center');
-const footerTextVisionImpaired = 'vision-impaired:text-sm vision-impaired:text-white';
+const footerTextVisionImpaired =
+  'vision-impaired:text-sm vision-impaired:text-white';
 
 export function PageTemplate({
   children,
@@ -41,7 +44,7 @@ export function PageTemplate({
     <FilterProvider value={filterValue}>
       <div className={vi(pageContainer(), pageContainerVisionImpaired)}>
         <TabNavigation />
-        <div className="px-4 py-2 shrink-0"> 
+        <div className="px-4 py-2 shrink-0">
           <div className="max-w-7xl mx-auto">
             <div className="space-y-2">
               <LocationToggle
@@ -55,15 +58,13 @@ export function PageTemplate({
             </div>
           </div>
         </div>
-        <div className="flex-1 overflow-hidden">
-          {children}
-        </div>
+        <div className="flex-1 overflow-hidden">{children}</div>
         <div className="p-4 shrink-0">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-center gap-3">
               <p className={vi(footerText(), footerTextVisionImpaired)}>
-                *Sailing via Devonport. Approximately 10 minutes longer than other
-                sailings.
+                *Sailing via Devonport. Approximately 10 minutes longer than
+                other sailings.
               </p>
               <VisionImpairedToggle
                 isVisionImpaired={isVisionImpaired}

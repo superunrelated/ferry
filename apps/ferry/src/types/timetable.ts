@@ -10,7 +10,14 @@ export type DayGroup =
   | 'saturday'
   | 'sunday';
 
-export type DayOfWeek = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+export type DayOfWeek =
+  | 'monday'
+  | 'tuesday'
+  | 'wednesday'
+  | 'thursday'
+  | 'friday'
+  | 'saturday'
+  | 'sunday';
 
 // New data format types
 export interface Sailing {
@@ -60,4 +67,3 @@ export interface FerryDeparture {
   notes?: string[];
   dayGroup?: DayGroup;
 }
-

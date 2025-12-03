@@ -22,31 +22,39 @@ const tableRow = cva('group hover:bg-slate-800/20 transition-colors', {
   },
 });
 
-const timeCell = cva('sticky left-0 z-10 bg-slate-800/95 backdrop-blur-sm group-hover:bg-slate-700/50 px-1.5 py-2 whitespace-nowrap text-sm font-semibold text-slate-200 border-r-2 border-slate-700/50 w-20');
-const timeCellVisionImpaired = 'vision-impaired:bg-black vision-impaired:text-white vision-impaired:font-bold vision-impaired:text-base vision-impaired:border-white vision-impaired:border-r-2 vision-impaired:group-hover:bg-gray-900';
+const timeCell = cva(
+  'sticky left-0 z-10 bg-slate-800/95 backdrop-blur-sm group-hover:bg-slate-700/50 px-1.5 py-2 whitespace-nowrap text-sm font-semibold text-slate-200 border-r-2 border-slate-700/50 w-20'
+);
+const timeCellVisionImpaired =
+  'vision-impaired:bg-black vision-impaired:text-white vision-impaired:font-bold vision-impaired:text-base vision-impaired:border-white vision-impaired:border-r-2 vision-impaired:group-hover:bg-gray-900';
 
-const dayCell = cva('px-3 py-2 text-center text-sm border-r border-slate-700/30 last:border-r-0', {
-  variants: {
-    isCurrentDay: {
-      true: 'bg-slate-800/30',
-      false: 'bg-slate-900/30',
+const dayCell = cva(
+  'px-3 py-2 text-center text-sm border-r border-slate-700/30 last:border-r-0',
+  {
+    variants: {
+      isCurrentDay: {
+        true: 'bg-slate-800/30',
+        false: 'bg-slate-900/30',
+      },
+      isNextSailing: {
+        true: 'bg-gradient-to-r from-yellow-500/30 to-orange-500/30 border-l-4 border-l-yellow-400 shadow-lg shadow-yellow-500/20',
+        false: '',
+      },
     },
-    isNextSailing: {
-      true: 'bg-gradient-to-r from-yellow-500/30 to-orange-500/30 border-l-4 border-l-yellow-400 shadow-lg shadow-yellow-500/20',
-      false: '',
-    },
-  },
-});
+  }
+);
 
 const dayCellVisionImpaired = {
   base: 'vision-impaired:text-base vision-impaired:font-semibold vision-impaired:border-white vision-impaired:border-r-2',
   currentDay: 'vision-impaired:bg-gray-900',
   defaultDay: 'vision-impaired:bg-black',
-  nextSailing: 'vision-impaired:bg-yellow-600 vision-impaired:border-l-yellow-500 vision-impaired:border-l-4',
+  nextSailing:
+    'vision-impaired:bg-yellow-600 vision-impaired:border-l-yellow-500 vision-impaired:border-l-4',
 };
 
 const emptyCell = cva('text-slate-600');
-const emptyCellVisionImpaired = 'vision-impaired:text-white vision-impaired:font-bold';
+const emptyCellVisionImpaired =
+  'vision-impaired:text-white vision-impaired:font-bold';
 
 export const TimetableRow = React.memo(function TimetableRow({
   slot,
@@ -61,9 +69,7 @@ export const TimetableRow = React.memo(function TimetableRow({
       ref={nextSailingRef}
       className={tableRow({ hasBorder: isFirstInHour && groupIndex > 0 })}
     >
-      <td className={vi(timeCell(), timeCellVisionImpaired)}>
-        {slot.time}
-      </td>
+      <td className={vi(timeCell(), timeCellVisionImpaired)}>{slot.time}</td>
       {DAYS.map((day) => {
         const daySailings = slot.sailings[day];
         const isCurrentDay = day === currentDayOfWeek;
@@ -72,9 +78,14 @@ export const TimetableRow = React.memo(function TimetableRow({
           <td
             key={day}
             className={vi(
-              dayCell({ isCurrentDay, isNextSailing: isNextSailingOnCurrentDay }),
+              dayCell({
+                isCurrentDay,
+                isNextSailing: isNextSailingOnCurrentDay,
+              }),
               dayCellVisionImpaired.base,
-              isCurrentDay ? dayCellVisionImpaired.currentDay : dayCellVisionImpaired.defaultDay,
+              isCurrentDay
+                ? dayCellVisionImpaired.currentDay
+                : dayCellVisionImpaired.defaultDay,
               isNextSailingOnCurrentDay ? dayCellVisionImpaired.nextSailing : ''
             )}
           >
@@ -91,7 +102,9 @@ export const TimetableRow = React.memo(function TimetableRow({
                 ))}
               </div>
             ) : (
-              <span className={vi(emptyCell(), emptyCellVisionImpaired)}>-</span>
+              <span className={vi(emptyCell(), emptyCellVisionImpaired)}>
+                -
+              </span>
             )}
           </td>
         );

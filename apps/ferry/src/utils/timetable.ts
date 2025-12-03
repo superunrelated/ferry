@@ -9,7 +9,15 @@ import {
 
 export function getCurrentDayOfWeek(): DayOfWeek {
   const day = new Date().getDay(); // 0 = Sunday, 1 = Monday, etc.
-  const days: DayOfWeek[] = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const days: DayOfWeek[] = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+  ];
   return days[day];
 }
 
@@ -75,14 +83,22 @@ export function getAllDepartures(
       if (to && route.to !== to) continue;
 
       // Convert DaySchedule to FerryDeparture[]
-      const days: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+      const days: DayOfWeek[] = [
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday',
+      ];
       for (const day of days) {
         const sailings = route.schedule[day];
         if (!sailings || !Array.isArray(sailings)) continue;
 
         for (const sailing of sailings) {
           if (!sailing || !sailing.time) continue;
-          
+
           departures.push({
             time: sailing.time,
             company: sailing.company,
@@ -122,17 +138,33 @@ export function getRemainingSailingsToday(
   const now = getCurrentTimeInMinutes();
   const currentDay = getCurrentDayOfWeek();
 
-  console.log('getRemainingSailingsToday - now:', now, 'currentDay:', currentDay, 'from:', from);
+  console.log(
+    'getRemainingSailingsToday - now:',
+    now,
+    'currentDay:',
+    currentDay,
+    'from:',
+    from
+  );
 
   const todaySailings: Sailing[] = [];
 
   console.log('Processing', timetables.length, 'timetables');
-  
+
   for (const timetable of timetables) {
     console.log('Processing timetable with', timetable.routes.length, 'routes');
 
     for (const route of timetable.routes) {
-      console.log('Checking route:', route.from, '->', route.to, 'matches', from, '?', route.from === from);
+      console.log(
+        'Checking route:',
+        route.from,
+        '->',
+        route.to,
+        'matches',
+        from,
+        '?',
+        route.from === from
+      );
       if (route.from !== from) {
         console.log('Skipping route - from does not match');
         continue;
@@ -141,7 +173,7 @@ export function getRemainingSailingsToday(
       console.log('Found route:', route.from, '->', route.to);
       const daySailings = route.schedule[currentDay];
       console.log('Day sailings for', currentDay, ':', daySailings);
-      
+
       if (!daySailings || !Array.isArray(daySailings)) {
         console.log('No sailings for', currentDay, 'or not an array');
         continue;
@@ -163,10 +195,19 @@ export function getRemainingSailingsToday(
           console.log('Skipping sailing - missing time:', sailing);
           continue;
         }
-        
+
         const timeInMinutes = parseTime(timeStr);
-        console.log('Sailing:', timeStr, 'parsed to:', timeInMinutes, 'now:', now, '>= now?', timeInMinutes >= now);
-        
+        console.log(
+          'Sailing:',
+          timeStr,
+          'parsed to:',
+          timeInMinutes,
+          'now:',
+          now,
+          '>= now?',
+          timeInMinutes >= now
+        );
+
         // Skip if time parsing failed (returns 0 for invalid)
         if (timeInMinutes === 0 && timeStr !== '00:00') {
           console.log('Skipping - invalid time parse');
@@ -183,7 +224,13 @@ export function getRemainingSailingsToday(
           console.log('Adding sailing:', sailingObj);
           todaySailings.push(sailingObj);
         } else {
-          console.log('Skipping - time is in the past:', timeStr, timeInMinutes, '<', now);
+          console.log(
+            'Skipping - time is in the past:',
+            timeStr,
+            timeInMinutes,
+            '<',
+            now
+          );
         }
       }
     }
@@ -209,21 +256,33 @@ export function getNextFerries(
   count: number = 3
 ): FerryDeparture[] {
   const remaining = getRemainingSailingsToday(timetables, from);
-  
+
   // Convert Sailing[] to FerryDeparture[] by finding the route for each sailing
   const departures: FerryDeparture[] = [];
-  
+
   for (const sailing of remaining.slice(0, count)) {
     // Find the route that contains this sailing
     for (const timetable of timetables) {
       for (const route of timetable.routes) {
         if (route.from !== from) continue;
-        
+
         // Check if this sailing exists in this route's schedule
-        const days: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        const days: DayOfWeek[] = [
+          'monday',
+          'tuesday',
+          'wednesday',
+          'thursday',
+          'friday',
+          'saturday',
+          'sunday',
+        ];
         for (const day of days) {
           const daySailings = route.schedule[day];
-          if (daySailings?.some(s => s.time === sailing.time && s.company === sailing.company)) {
+          if (
+            daySailings?.some(
+              (s) => s.time === sailing.time && s.company === sailing.company
+            )
+          ) {
             departures.push({
               time: sailing.time,
               company: sailing.company,
@@ -234,16 +293,22 @@ export function getNextFerries(
             break;
           }
         }
-        if (departures.length > 0 && departures[departures.length - 1].time === sailing.time) {
+        if (
+          departures.length > 0 &&
+          departures[departures.length - 1].time === sailing.time
+        ) {
           break;
         }
       }
-      if (departures.length > 0 && departures[departures.length - 1].time === sailing.time) {
+      if (
+        departures.length > 0 &&
+        departures[departures.length - 1].time === sailing.time
+      ) {
         break;
       }
     }
   }
-  
+
   return departures;
 }
 
@@ -272,4 +337,3 @@ export function formatMinutesUntil(minutes: number): string {
   }
   return `${hours} hr ${mins} min`;
 }
-

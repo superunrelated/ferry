@@ -20,7 +20,8 @@ export function isOnWaiheke(coords: Coordinates): boolean {
   );
 }
 
-export function getLocationFromCoords(coords: Coordinates): 'Auckland' | 'Waiheke' {
+export function getLocationFromCoords(
+  coords: Coordinates
+): 'Auckland' | 'Waiheke' {
   return isOnWaiheke(coords) ? 'Waiheke' : 'Auckland';
 }
-

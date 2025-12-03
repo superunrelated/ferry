@@ -1,7 +1,8 @@
 import { cva, vi } from '@ferry/ui';
 
 const text = cva('text-slate-400');
-const textVisionImpaired = 'vision-impaired:text-base vision-impaired:text-white vision-impaired:font-bold';
+const textVisionImpaired =
+  'vision-impaired:text-base vision-impaired:text-white vision-impaired:font-bold';
 
 export function NoLocationState() {
   return (
@@ -12,4 +13,3 @@ export function NoLocationState() {
     </div>
   );
 }
-

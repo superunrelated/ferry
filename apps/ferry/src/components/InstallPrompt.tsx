@@ -1,7 +1,13 @@
 import { useInstallPrompt } from '../hooks/useInstallPrompt';
 
 export function InstallPrompt() {
-  const { isInstallable, isIOS, showPrompt, handleInstallClick, handleDismiss } = useInstallPrompt();
+  const {
+    isInstallable,
+    isIOS,
+    showPrompt,
+    handleInstallClick,
+    handleDismiss,
+  } = useInstallPrompt();
 
   if (!showPrompt) {
     return null;
@@ -42,7 +48,9 @@ export function InstallPrompt() {
               <div className="space-y-2">
                 <div className="text-xs text-slate-300 bg-slate-900/50 rounded-lg p-2">
                   <p className="font-medium mb-1">Tap the share button</p>
-                  <p className="text-slate-400">Then select "Add to Home Screen"</p>
+                  <p className="text-slate-400">
+                    Then select "Add to Home Screen"
+                  </p>
                 </div>
                 <button
                   onClick={handleDismiss}
@@ -93,4 +101,3 @@ export function InstallPrompt() {
     </div>
   );
 }
-

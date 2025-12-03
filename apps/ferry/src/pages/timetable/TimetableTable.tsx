@@ -14,7 +14,8 @@ export interface TimetableTableProps {
 }
 
 const tableBody = cva('divide-y divide-slate-700/30');
-const tableBodyVisionImpaired = 'vision-impaired:divide-y-2 vision-impaired:divide-white';
+const tableBodyVisionImpaired =
+  'vision-impaired:divide-y-2 vision-impaired:divide-white';
 
 export function TimetableTable({
   hourGroups,
@@ -53,4 +54,3 @@ export function TimetableTable({
     </table>
   );
 }
-

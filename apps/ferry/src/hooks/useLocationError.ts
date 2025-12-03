@@ -14,4 +14,3 @@ export function useLocationError(error: string | null) {
     setShowErrorDialog,
   };
 }
-

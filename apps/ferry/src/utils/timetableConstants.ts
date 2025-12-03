@@ -24,4 +24,3 @@ export function getCurrentDayOfWeekFromDate(date: Date): DayOfWeek {
   const dayIndex = date.getDay();
   return DAYS[dayIndex === 0 ? 6 : dayIndex - 1];
 }
-

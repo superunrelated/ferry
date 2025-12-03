@@ -12,4 +12,3 @@ export * from './lib/components/FilterContext';
 export * from './lib/components/VisionImpairedToggle';
 export * from './lib/types/timetable';
 export * from './lib/utils/visionImpaired';
-

@@ -9,7 +9,8 @@ const button = cva(
   'inline-flex items-center gap-3 px-5 py-3 rounded-md text-sm font-medium transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-95'
 );
 
-const buttonVisionImpaired = 'vision-impaired:text-sm vision-impaired:px-5 vision-impaired:py-3 vision-impaired:text-white vision-impaired:hover:bg-slate-700/70';
+const buttonVisionImpaired =
+  'vision-impaired:text-sm vision-impaired:px-5 vision-impaired:py-3 vision-impaired:text-white vision-impaired:hover:bg-slate-700/70';
 
 export function VisionImpairedToggle({
   isVisionImpaired,
@@ -18,7 +19,11 @@ export function VisionImpairedToggle({
   return (
     <button
       onClick={onToggle}
-      aria-label={isVisionImpaired ? 'Disable vision impaired mode' : 'Enable vision impaired mode'}
+      aria-label={
+        isVisionImpaired
+          ? 'Disable vision impaired mode'
+          : 'Enable vision impaired mode'
+      }
       aria-pressed={isVisionImpaired}
       className={vi(button(), buttonVisionImpaired)}
     >
@@ -48,4 +53,3 @@ export function VisionImpairedToggle({
     </button>
   );
 }
-

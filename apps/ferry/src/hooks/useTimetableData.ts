@@ -1,8 +1,18 @@
 import { useMemo } from 'react';
-import { TimetableData, DayOfWeek, FerryCompany, Location } from '../types/timetable';
+import {
+  TimetableData,
+  DayOfWeek,
+  FerryCompany,
+  Location,
+} from '../types/timetable';
 import { getCurrentTimeInMinutes } from '../utils/timetable';
 import { getCurrentDayOfWeekFromDate } from '../utils/timetableConstants';
-import { buildTimeSlots, findNextSailingTime, groupTimeSlotsByHour, TimeSlot } from '../utils/timetableData';
+import {
+  buildTimeSlots,
+  findNextSailingTime,
+  groupTimeSlotsByHour,
+  TimeSlot,
+} from '../utils/timetableData';
 
 export interface UseTimetableDataResult {
   timeSlots: TimeSlot[];
@@ -30,7 +40,8 @@ export function useTimetableData(
   );
 
   const nextSailingTime = useMemo(
-    () => findNextSailingTime(timeSlots, currentDayOfWeek, currentTimeInMinutes),
+    () =>
+      findNextSailingTime(timeSlots, currentDayOfWeek, currentTimeInMinutes),
     [timeSlots, currentDayOfWeek, currentTimeInMinutes]
   );
 
@@ -47,4 +58,3 @@ export function useTimetableData(
     currentTimeInMinutes,
   };
 }
-

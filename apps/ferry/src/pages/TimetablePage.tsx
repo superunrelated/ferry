@@ -40,11 +40,11 @@ export function TimetablePage() {
 
   const loading = timetableLoading || locationLoading;
 
-  const {
-    hourGroups,
-    nextSailingTime,
-    currentDayOfWeek,
-  } = useTimetableData(timetables, departureLocation, filterCompany);
+  const { hourGroups, nextSailingTime, currentDayOfWeek } = useTimetableData(
+    timetables,
+    departureLocation,
+    filterCompany
+  );
 
   const nextSailingRef = useRef<HTMLTableRowElement>(null);
   const currentDayHeaderRef = useRef<HTMLTableCellElement>(null);
@@ -81,7 +81,11 @@ export function TimetablePage() {
             <NoLocationState />
           ) : (
             <Card className="h-full flex flex-col">
-              <CardContent ref={scrollContainerRef} scrollable className="flex-1">
+              <CardContent
+                ref={scrollContainerRef}
+                scrollable
+                className="flex-1"
+              >
                 <TimetableTable
                   hourGroups={hourGroups}
                   currentDayOfWeek={currentDayOfWeek}

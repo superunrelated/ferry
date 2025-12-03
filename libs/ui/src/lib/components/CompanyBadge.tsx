@@ -16,7 +16,8 @@ const badge = cva('inline-flex items-center text-xs font-semibold', {
     },
     company: {
       fullers: 'bg-fullers/20 text-fullers border border-fullers/40',
-      'island-direct': 'bg-island-direct/20 text-island-direct border border-island-direct/40',
+      'island-direct':
+        'bg-island-direct/20 text-island-direct border border-island-direct/40',
     },
   },
   defaultVariants: {
@@ -27,14 +28,17 @@ const badge = cva('inline-flex items-center text-xs font-semibold', {
 const badgeVisionImpaired = cva('', {
   variants: {
     company: {
-      fullers: 'vision-impaired:text-sm vision-impaired:font-bold vision-impaired:bg-fullers vision-impaired:text-white vision-impaired:border-fullers vision-impaired:border-2',
-      'island-direct': 'vision-impaired:text-sm vision-impaired:font-bold vision-impaired:bg-island-direct vision-impaired:text-white vision-impaired:border-island-direct vision-impaired:border-2',
+      fullers:
+        'vision-impaired:text-sm vision-impaired:font-bold vision-impaired:bg-fullers vision-impaired:text-white vision-impaired:border-fullers vision-impaired:border-2',
+      'island-direct':
+        'vision-impaired:text-sm vision-impaired:font-bold vision-impaired:bg-island-direct vision-impaired:text-white vision-impaired:border-island-direct vision-impaired:border-2',
     },
   },
 });
 
 const asterisk = cva('ml-1.5 text-orange-400 text-[10px]');
-const asteriskVisionImpaired = 'vision-impaired:text-xs vision-impaired:text-orange-300 vision-impaired:font-bold';
+const asteriskVisionImpaired =
+  'vision-impaired:text-xs vision-impaired:text-orange-300 vision-impaired:font-bold';
 
 export function CompanyBadge({
   company,
@@ -58,4 +62,3 @@ export function CompanyBadge({
     </Component>
   );
 }
-

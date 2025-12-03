@@ -6,7 +6,8 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export function useInstallPrompt() {
-  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [deferredPrompt, setDeferredPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
   const [isInstallable, setIsInstallable] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
@@ -14,15 +15,16 @@ export function useInstallPrompt() {
 
   useEffect(() => {
     // Check if already installed (standalone mode)
-    const isStandaloneMode = 
+    const isStandaloneMode =
       window.matchMedia('(display-mode: standalone)').matches ||
       (window.navigator as any).standalone === true ||
       document.referrer.includes('android-app://');
-    
+
     setIsStandalone(isStandaloneMode);
 
     // Check if iOS
-    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+    const iOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
     setIsIOS(iOS);
 
     // Check if already shown prompt in this session
@@ -38,7 +40,7 @@ export function useInstallPrompt() {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
       setIsInstallable(true);
-      
+
       // Show our custom prompt banner after a delay
       // The browser warning is expected - we're intentionally preventing default
       // to show our custom UI, and will call prompt() when user clicks Install
@@ -57,7 +59,10 @@ export function useInstallPrompt() {
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener(
+        'beforeinstallprompt',
+        handleBeforeInstallPrompt
+      );
     };
   }, []);
 
@@ -68,7 +73,7 @@ export function useInstallPrompt() {
         // This is called when user clicks our custom "Install" button
         await deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
-        
+
         if (outcome === 'accepted') {
           setShowPrompt(false);
           setIsInstallable(false);
@@ -81,7 +86,7 @@ export function useInstallPrompt() {
         setDeferredPrompt(null);
       }
     }
-    
+
     // Mark as shown in session
     sessionStorage.setItem('install-prompt-shown', 'true');
     setShowPrompt(false);
@@ -101,4 +106,3 @@ export function useInstallPrompt() {
     handleDismiss,
   };
 }
-

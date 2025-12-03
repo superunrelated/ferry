@@ -66,4 +66,3 @@ export function useLocation(): UseLocationReturn {
     requestLocation,
   };
 }
-

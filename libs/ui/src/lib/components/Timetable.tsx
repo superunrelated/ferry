@@ -9,11 +9,11 @@ export interface TimetableProps {
 
 const dayGroupLabels: Record<DayGroup, string> = {
   'monday-tuesday': 'Monday - Tuesday',
-  'wednesday': 'Wednesday',
+  wednesday: 'Wednesday',
   'wednesday-friday': 'Wednesday - Friday',
   'thursday-friday': 'Thursday - Friday',
-  'saturday': 'Saturday',
-  'sunday': 'Sunday / Public Holiday',
+  saturday: 'Saturday',
+  sunday: 'Sunday / Public Holiday',
 };
 
 export function Timetable({
@@ -25,7 +25,8 @@ export function Timetable({
   const grouped: Record<string, FerryDeparture[]> = {};
 
   for (const departure of departures) {
-    if (filterDirection !== 'all' && departure.from !== filterDirection) continue;
+    if (filterDirection !== 'all' && departure.from !== filterDirection)
+      continue;
     if (filterDay !== 'all' && departure.dayGroup !== filterDay) continue;
 
     const dayKey = departure.dayGroup || 'unknown';
@@ -78,4 +79,3 @@ export function Timetable({
     </div>
   );
 }
-

@@ -1,4 +1,10 @@
-import { TimetableData, DayOfWeek, Sailing, FerryCompany, Location } from '../types/timetable';
+import {
+  TimetableData,
+  DayOfWeek,
+  Sailing,
+  FerryCompany,
+  Location,
+} from '../types/timetable';
 import { parseTime } from './timetable';
 import { DAYS } from './timetableConstants';
 
@@ -114,4 +120,3 @@ export function groupTimeSlotsByHour(timeSlots: TimeSlot[]): {
 
   return hourGroups;
 }
-

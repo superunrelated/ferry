@@ -24,7 +24,7 @@ export interface FilterProviderProps {
 }
 
 export function FilterProvider({ children, value }: FilterProviderProps) {
-  return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>;
+  return (
+    <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
+  );
 }
-
-
