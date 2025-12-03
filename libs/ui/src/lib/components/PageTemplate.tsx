@@ -6,6 +6,7 @@ import { VisionImpairedToggle } from './VisionImpairedToggle';
 import { FerryCompany, Location } from '../types/timetable';
 import { FilterProvider, FilterContextValue } from './FilterContext';
 import { useVisionImpaired } from '../hooks/useVisionImpaired';
+import { cva, vi } from '../utils/visionImpaired';
 
 export interface PageTemplateProps {
   children: ReactNode;
@@ -14,6 +15,12 @@ export interface PageTemplateProps {
   filterCompany: FerryCompany | 'all';
   setFilterCompany: (company: FerryCompany | 'all') => void;
 }
+
+const pageContainer = cva('h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden');
+const pageContainerVisionImpaired = 'vision-impaired:bg-black';
+
+const footerText = cva('text-xs text-slate-500 text-center');
+const footerTextVisionImpaired = 'vision-impaired:text-sm vision-impaired:text-white';
 
 export function PageTemplate({
   children,
@@ -32,7 +39,7 @@ export function PageTemplate({
 
   return (
     <FilterProvider value={filterValue}>
-      <div className={`h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden vision-impaired:bg-black`}>
+      <div className={vi(pageContainer(), pageContainerVisionImpaired)}>
         <TabNavigation />
         <div className="px-4 py-2 shrink-0"> 
           <div className="max-w-7xl mx-auto">
@@ -54,7 +61,7 @@ export function PageTemplate({
         <div className="p-4 shrink-0">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-center gap-3">
-              <p className="text-xs text-slate-500 text-center vision-impaired:text-sm vision-impaired:text-white">
+              <p className={vi(footerText(), footerTextVisionImpaired)}>
                 *Sailing via Devonport. Approximately 10 minutes longer than other
                 sailings.
               </p>

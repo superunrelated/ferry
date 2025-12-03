@@ -1,4 +1,5 @@
 import { ReactNode, forwardRef } from 'react';
+import { cva, vi } from '../utils/visionImpaired';
 
 export interface CardProps {
   children: ReactNode;
@@ -15,9 +16,15 @@ export interface CardContentProps {
   className?: string;
 }
 
+const card = cva('bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700/50 overflow-hidden');
+const cardVisionImpaired = 'vision-impaired:bg-black vision-impaired:border-white vision-impaired:border-2';
+
+const cardHeader = cva('px-2 py-2 bg-gradient-to-r from-slate-800/80 to-slate-700/80 border-b border-slate-700/50');
+const cardHeaderVisionImpaired = 'vision-impaired:bg-black vision-impaired:border-white vision-impaired:border-b-2';
+
 export function Card({ children, className }: CardProps) {
   return (
-    <div className={`bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700/50 overflow-hidden vision-impaired:bg-black vision-impaired:border-white vision-impaired:border-2 ${className || ''}`}>
+    <div className={vi(card(), cardVisionImpaired, className)}>
       {children}
     </div>
   );
@@ -25,7 +32,7 @@ export function Card({ children, className }: CardProps) {
 
 export function CardHeader({ children }: CardHeaderProps) {
   return (
-    <div className="px-2 py-2 bg-gradient-to-r from-slate-800/80 to-slate-700/80 border-b border-slate-700/50 vision-impaired:bg-black vision-impaired:border-white vision-impaired:border-b-2">
+    <div className={vi(cardHeader(), cardHeaderVisionImpaired)}>
       {children}
     </div>
   );

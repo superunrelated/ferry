@@ -1,7 +1,15 @@
+import { cva, vi } from '../utils/visionImpaired';
+
 export interface VisionImpairedToggleProps {
   isVisionImpaired: boolean;
   onToggle: () => void;
 }
+
+const button = cva(
+  'inline-flex items-center gap-3 px-5 py-3 rounded-md text-sm font-medium transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-95'
+);
+
+const buttonVisionImpaired = 'vision-impaired:text-sm vision-impaired:px-5 vision-impaired:py-3 vision-impaired:text-white vision-impaired:hover:bg-slate-700/70';
 
 export function VisionImpairedToggle({
   isVisionImpaired,
@@ -12,7 +20,7 @@ export function VisionImpairedToggle({
       onClick={onToggle}
       aria-label={isVisionImpaired ? 'Disable vision impaired mode' : 'Enable vision impaired mode'}
       aria-pressed={isVisionImpaired}
-      className="inline-flex items-center gap-3 px-5 py-3 rounded-md text-sm font-medium transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-95 vision-impaired:text-sm vision-impaired:px-5 vision-impaired:py-3 vision-impaired:text-white vision-impaired:hover:bg-slate-700/70"
+      className={vi(button(), buttonVisionImpaired)}
     >
       <svg
         className="w-7 h-7"
