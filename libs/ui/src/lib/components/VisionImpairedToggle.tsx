@@ -6,11 +6,11 @@ export interface VisionImpairedToggleProps {
 }
 
 const button = cva(
-  'inline-flex items-center gap-3 px-5 py-3 rounded-md text-sm font-medium transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-95'
+  'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-sm font-medium transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-95'
 );
 
 const buttonVisionImpaired =
-  'vision-impaired:text-sm vision-impaired:px-5 vision-impaired:py-3 vision-impaired:text-white vision-impaired:hover:bg-slate-700/70';
+  'vision-impaired:text-sm vision-impaired:px-2.5 vision-impaired:py-1.5 vision-impaired:text-white vision-impaired:hover:bg-slate-700/70';
 
 export function VisionImpairedToggle({
   isVisionImpaired,
@@ -28,7 +28,7 @@ export function VisionImpairedToggle({
       className={vi(button(), buttonVisionImpaired)}
     >
       <svg
-        className="w-7 h-7"
+        className="w-6 h-6"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

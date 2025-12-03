@@ -21,7 +21,7 @@ const pageContainer = cva(
 );
 const pageContainerVisionImpaired = 'vision-impaired:bg-black';
 
-const footerText = cva('text-xs text-slate-500 text-center');
+const footerText = cva('text-xs text-slate-500 text-left');
 const footerTextVisionImpaired =
   'vision-impaired:text-sm vision-impaired:text-white';
 
@@ -61,7 +61,7 @@ export function PageTemplate({
         <div className="flex-1 overflow-hidden">{children}</div>
         <div className="p-1 pt-0 shrink-0">
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-3 px-4 py-2">
               <p className={vi(footerText(), footerTextVisionImpaired)}>
                 *Sailing via Devonport. Approximately 10 minutes longer than
                 other sailings.
