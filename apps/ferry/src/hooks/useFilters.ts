@@ -23,9 +23,8 @@ export function useFilters() {
     return 'all';
   };
 
-  const [departureLocation, setDepartureLocationState] = useState<Location | null>(
-    getFromParam()
-  );
+  const [departureLocation, setDepartureLocationState] =
+    useState<Location | null>(getFromParam());
   const [filterCompany, setFilterCompanyState] = useState<FerryCompany | 'all'>(
     getCompanyParam()
   );
@@ -33,7 +32,7 @@ export function useFilters() {
   useEffect(() => {
     const fromParam = getFromParam();
     const companyParam = getCompanyParam();
-    
+
     setDepartureLocationState(fromParam);
     setFilterCompanyState(companyParam);
   }, [detectedLocation, searchParams]);
@@ -67,4 +66,3 @@ export function useFilters() {
     setFilterCompany,
   };
 }
-

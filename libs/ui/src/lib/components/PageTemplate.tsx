@@ -2,8 +2,10 @@ import { ReactNode } from 'react';
 import { LocationToggle } from './LocationToggle';
 import { CompanyFilter } from './CompanyFilter';
 import { TabNavigation } from './TabNavigation';
+import { VisionImpairedToggle } from './VisionImpairedToggle';
 import { FerryCompany, Location } from '../types/timetable';
 import { FilterProvider, FilterContextValue } from './FilterContext';
+import { useVisionImpaired } from '../hooks/useVisionImpaired';
 
 export interface PageTemplateProps {
   children: ReactNode;
@@ -26,12 +28,13 @@ export function PageTemplate({
     filterCompany,
     setFilterCompany,
   };
+  const { isVisionImpaired, toggleVisionImpaired } = useVisionImpaired();
 
   return (
     <FilterProvider value={filterValue}>
-      <div className="h-screen flex flex-col bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+      <div className={`h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden vision-impaired:bg-black`}>
         <TabNavigation />
-        <div className="px-4 py-2 flex-shrink-0">
+        <div className="px-4 py-2 shrink-0"> 
           <div className="max-w-7xl mx-auto">
             <div className="space-y-2">
               <LocationToggle
@@ -48,12 +51,18 @@ export function PageTemplate({
         <div className="flex-1 overflow-hidden">
           {children}
         </div>
-        <div className="p-4 flex-shrink-0">
+        <div className="p-4 shrink-0">
           <div className="max-w-7xl mx-auto">
-            <p className="text-xs text-slate-500 text-center">
-              *Sailing via Devonport. Approximately 10 minutes longer than other
-              sailings.
-            </p>
+            <div className="flex items-center justify-center gap-3">
+              <p className="text-xs text-slate-500 text-center vision-impaired:text-sm vision-impaired:text-white">
+                *Sailing via Devonport. Approximately 10 minutes longer than other
+                sailings.
+              </p>
+              <VisionImpairedToggle
+                isVisionImpaired={isVisionImpaired}
+                onToggle={toggleVisionImpaired}
+              />
+            </div>
           </div>
         </div>
       </div>

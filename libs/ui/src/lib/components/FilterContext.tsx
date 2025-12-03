@@ -27,3 +27,4 @@ export function FilterProvider({ children, value }: FilterProviderProps) {
   return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>;
 }
 
+

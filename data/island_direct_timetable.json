@@ -7,15 +7,7 @@
       "schedule": {
         "monday": [
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "08:15",
             "company": "Island Direct"
           },
           {
@@ -23,15 +15,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "12:30",
             "company": "Island Direct"
           },
           {
@@ -39,15 +23,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:20",
             "company": "Island Direct"
           },
           {
@@ -55,37 +31,17 @@
             "company": "Island Direct"
           },
           {
-            "time": "18:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "19:30",
             "company": "Island Direct"
           },
           {
-            "time": "20:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "21:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "22:30",
             "company": "Island Direct"
           }
         ],
         "tuesday": [
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "08:15",
             "company": "Island Direct"
           },
           {
@@ -93,15 +49,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "12:30",
             "company": "Island Direct"
           },
           {
@@ -109,15 +57,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:20",
             "company": "Island Direct"
           },
           {
@@ -125,37 +65,17 @@
             "company": "Island Direct"
           },
           {
-            "time": "18:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "19:30",
             "company": "Island Direct"
           },
           {
-            "time": "20:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "21:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "22:30",
             "company": "Island Direct"
           }
         ],
         "wednesday": [
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "08:15",
             "company": "Island Direct"
           },
           {
@@ -167,14 +87,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:30",
             "company": "Island Direct"
           },
@@ -183,19 +95,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "13:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "14:30",
             "company": "Island Direct"
           },
           {
             "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:20",
             "company": "Island Direct"
           },
           {
@@ -220,24 +124,12 @@
           },
           {
             "time": "21:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "22:30",
             "company": "Island Direct"
           }
         ],
         "thursday": [
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "08:15",
             "company": "Island Direct"
           },
           {
@@ -249,14 +141,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:30",
             "company": "Island Direct"
           },
@@ -265,19 +149,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "13:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "14:30",
             "company": "Island Direct"
           },
           {
             "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:20",
             "company": "Island Direct"
           },
           {
@@ -306,24 +182,12 @@
           },
           {
             "time": "22:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "23:30",
             "company": "Island Direct"
           }
         ],
         "friday": [
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "08:15",
             "company": "Island Direct"
           },
           {
@@ -335,14 +199,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:30",
             "company": "Island Direct"
           },
@@ -351,19 +207,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "13:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "14:30",
             "company": "Island Direct"
           },
           {
             "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:20",
             "company": "Island Direct"
           },
           {
@@ -392,10 +240,6 @@
           },
           {
             "time": "22:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "23:30",
             "company": "Island Direct"
           }
         ],
@@ -405,23 +249,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "08:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "09:15",
             "company": "Island Direct"
           },
           {
             "time": "10:00",
-            "company": "Island Direct"
-          },
-          {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:00",
             "company": "Island Direct"
           },
           {
@@ -433,19 +265,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "13:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "14:30",
             "company": "Island Direct"
           },
           {
             "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:20",
             "company": "Island Direct"
           },
           {
@@ -474,10 +298,6 @@
           },
           {
             "time": "22:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "23:30",
             "company": "Island Direct"
           }
         ],
@@ -487,23 +307,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "08:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "09:15",
             "company": "Island Direct"
           },
           {
             "time": "10:00",
-            "company": "Island Direct"
-          },
-          {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:00",
             "company": "Island Direct"
           },
           {
@@ -515,19 +323,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "13:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "14:30",
             "company": "Island Direct"
           },
           {
             "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:20",
             "company": "Island Direct"
           },
           {
@@ -552,10 +352,6 @@
           },
           {
             "time": "21:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "22:30",
             "company": "Island Direct"
           }
         ]
@@ -571,15 +367,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "09:15",
             "company": "Island Direct"
           },
           {
@@ -587,15 +375,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "12:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "13:30",
             "company": "Island Direct"
           },
           {
@@ -603,15 +383,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "16:20",
-            "company": "Island Direct"
-          },
-          {
-            "time": "17:30",
             "company": "Island Direct"
           },
           {
@@ -619,15 +391,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "19:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "20:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "21:30",
             "company": "Island Direct"
           },
           {
@@ -641,15 +405,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "09:15",
             "company": "Island Direct"
           },
           {
@@ -657,15 +413,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "12:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "13:30",
             "company": "Island Direct"
           },
           {
@@ -673,15 +421,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "15:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "16:20",
-            "company": "Island Direct"
-          },
-          {
-            "time": "17:30",
             "company": "Island Direct"
           },
           {
@@ -689,15 +429,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "19:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "20:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "21:30",
             "company": "Island Direct"
           },
           {
@@ -711,19 +443,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "10:00",
             "company": "Island Direct"
           },
           {
@@ -735,10 +455,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "12:30",
             "company": "Island Direct"
           },
@@ -747,19 +463,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:30",
             "company": "Island Direct"
           },
           {
             "time": "16:20",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:30",
             "company": "Island Direct"
           },
           {
@@ -793,19 +501,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "10:00",
             "company": "Island Direct"
           },
           {
@@ -817,10 +513,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "12:30",
             "company": "Island Direct"
           },
@@ -829,19 +521,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:30",
             "company": "Island Direct"
           },
           {
             "time": "16:20",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:30",
             "company": "Island Direct"
           },
           {
@@ -879,19 +563,7 @@
             "company": "Island Direct"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "10:00",
             "company": "Island Direct"
           },
           {
@@ -903,10 +575,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "12:30",
             "company": "Island Direct"
           },
@@ -915,19 +583,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:30",
             "company": "Island Direct"
           },
           {
             "time": "16:20",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:30",
             "company": "Island Direct"
           },
           {
@@ -961,19 +621,7 @@
         ],
         "saturday": [
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "10:00",
             "company": "Island Direct"
           },
           {
@@ -985,10 +633,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "12:30",
             "company": "Island Direct"
           },
@@ -997,19 +641,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:30",
             "company": "Island Direct"
           },
           {
             "time": "16:20",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:30",
             "company": "Island Direct"
           },
           {
@@ -1043,19 +679,7 @@
         ],
         "sunday": [
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
-            "time": "10:00",
             "company": "Island Direct"
           },
           {
@@ -1067,10 +691,6 @@
             "company": "Island Direct"
           },
           {
-            "time": "11:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "12:30",
             "company": "Island Direct"
           },
@@ -1079,19 +699,11 @@
             "company": "Island Direct"
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:30",
             "company": "Island Direct"
           },
           {
             "time": "16:20",
-            "company": "Island Direct"
-          },
-          {
-            "time": "16:30",
             "company": "Island Direct"
           },
           {
