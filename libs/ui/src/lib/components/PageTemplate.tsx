@@ -59,7 +59,7 @@ export function PageTemplate({
           </div>
         </div>
         <div className="flex-1 overflow-hidden">{children}</div>
-        <div className="p-4 shrink-0">
+        <div className="p-1 pt-0 shrink-0">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-center gap-3">
               <p className={vi(footerText(), footerTextVisionImpaired)}>

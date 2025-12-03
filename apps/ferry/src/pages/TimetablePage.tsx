@@ -66,7 +66,7 @@ export function TimetablePage() {
       filterCompany={filterCompany}
       setFilterCompany={setFilterCompany}
     >
-      <div className="h-full p-4">
+      <div className="h-full px-4 py-2">
         <div className="max-w-7xl mx-auto h-full">
           <LocationErrorDialog
             open={showErrorDialog}
