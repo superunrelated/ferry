@@ -7,61 +7,69 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const ISLAND_DIRECT_URL = 'https://islanddirect.co.nz/pages/timetable';
+// Use homepage which has both directions visible at once
+const ISLAND_DIRECT_URL = 'https://islanddirect.co.nz/';
 const DATA_DIR = join(__dirname, '..', '..', 'data');
 const HTML_DIR = join(DATA_DIR, 'html');
 
 async function scrapeIslandDirect() {
   try {
-    // Ensure directories exist
     await mkdir(DATA_DIR, { recursive: true });
     await mkdir(HTML_DIR, { recursive: true });
 
     console.log('Fetching Island Direct timetable...');
     const response = await fetch(ISLAND_DIRECT_URL);
     const html = await response.text();
-    
-    // Save HTML for debugging
+
     const htmlPath = join(HTML_DIR, 'island_direct.html');
     await writeFile(htmlPath, html, 'utf-8');
     console.log(`✓ Saved HTML to ${htmlPath}`);
-    
+
     const $ = cheerio.load(html);
 
     const routes = [];
 
-    // Extract Auckland to Waiheke schedule
-    const aucklandToWaiheke = extractSchedule($, 'Auckland', 'Waiheke');
-    if (aucklandToWaiheke && Object.keys(aucklandToWaiheke).length > 0) {
+    // Extract Auckland to Waiheke schedule using data-time-table attribute
+    const aucklandToWaiheke = extractSchedule($, 'Auckland');
+    if (aucklandToWaiheke && hasAnySailings(aucklandToWaiheke)) {
       routes.push({
         from: 'Auckland',
         to: 'Waiheke',
-        schedule: aucklandToWaiheke
+        schedule: aucklandToWaiheke,
       });
+      console.log(
+        `  Auckland -> Waiheke: ${countSailings(
+          aucklandToWaiheke
+        )} Monday sailings`
+      );
     }
 
-    // Extract Waiheke to Auckland schedule
-    const waihekeToAuckland = extractSchedule($, 'Waiheke', 'Auckland');
-    if (waihekeToAuckland && Object.keys(waihekeToAuckland).length > 0) {
+    // Extract Waiheke to Auckland schedule using data-time-table attribute
+    const waihekeToAuckland = extractSchedule($, 'Waiheke');
+    if (waihekeToAuckland && hasAnySailings(waihekeToAuckland)) {
       routes.push({
         from: 'Waiheke',
         to: 'Auckland',
-        schedule: waihekeToAuckland
+        schedule: waihekeToAuckland,
       });
+      console.log(
+        `  Waiheke -> Auckland: ${countSailings(
+          waihekeToAuckland
+        )} Monday sailings`
+      );
     }
 
     const timetable = {
       lastUpdated: new Date().toISOString(),
-      routes
+      routes,
     };
 
-    // Save to JSON file
     const outputPath = join(DATA_DIR, 'island_direct_timetable.json');
     await writeFile(outputPath, JSON.stringify(timetable, null, 2), 'utf-8');
 
     console.log(`✓ Island Direct timetable saved to ${outputPath}`);
     console.log(`  Routes found: ${routes.length}`);
-    
+
     return timetable;
   } catch (error) {
     console.error('Error scraping Island Direct:', error);
@@ -69,8 +77,15 @@ async function scrapeIslandDirect() {
   }
 }
 
-function extractSchedule($, from, to) {
-  // Initialize schedule for individual days
+function hasAnySailings(schedule) {
+  return Object.values(schedule).some((day) => day.length > 0);
+}
+
+function countSailings(schedule) {
+  return schedule.monday?.length || 0;
+}
+
+function extractSchedule($, from) {
   const schedule = {
     monday: [],
     tuesday: [],
@@ -78,197 +93,127 @@ function extractSchedule($, from, to) {
     thursday: [],
     friday: [],
     saturday: [],
-    sunday: []
+    sunday: [],
   };
 
-  // Day patterns based on Island Direct website structure
-  const dayPatterns = [
-    { 
-      key: 'monday-tuesday', 
-      labels: ['Mon & Tues', 'Mon & Tue', 'MON & TUES', 'Monday - Tuesday', 'Monday-Tuesday'],
-      days: ['monday', 'tuesday']
-    },
-    { 
-      key: 'wednesday', 
-      labels: ['wednesday', 'WEDNESDAY', 'Wednesday', 'Wed'],
-      days: ['wednesday']
-    },
-    { 
-      key: 'thursday-friday', 
-      labels: ['thurs & fri', 'THURS & FRI', 'Thursday - Friday', 'Thursday-Friday', 'Thu-Fri', 'Thu - Fri'],
-      days: ['thursday', 'friday']
-    },
-    { 
-      key: 'saturday', 
-      labels: ['SATURDAY', 'Saturday', 'Sat'],
-      days: ['saturday']
-    },
-    { 
-      key: 'sunday', 
-      labels: ['sunday', 'SUNDAY', 'Sunday', 'Sun'],
-      days: ['sunday']
-    }
-  ];
+  // Find the container using data-time-table attribute
+  // This properly scopes the search to only this direction's times
+  const $container = $(`[data-time-table="${from}"]`);
 
-  // Find the section for the route direction
-  // Look for headings like "Departure times: Auckland" or "Departing: Auckland"
-  const routeHeading = $(`h4, h5, h6, [class*="departure"], [class*="timetable"]`).filter((i, elem) => {
-    const text = $(elem).text().toLowerCase();
-    return text.includes('departure') && text.includes(from.toLowerCase());
-  }).first();
-
-  // Find the container with the timetable
-  let $container = routeHeading.length ? routeHeading.parent() : $('body');
   if (!$container.length) {
-    $container = $('body');
+    console.log(`  Warning: No [data-time-table="${from}"] found`);
+    return schedule;
   }
 
-  // Extract times for each day pattern
-  // Look for h6 tags which contain day labels, then find times in following p tags
-  $container.find('h5, h6').each((i, elem) => {
-    const $elem = $(elem);
-    const text = $elem.text().trim();
-    
+  // Day patterns - maps day labels to actual days
+  const dayPatterns = [
+    {
+      labels: ['mon & tues', 'mon & tue', 'monday & tuesday'],
+      days: ['monday', 'tuesday'],
+    },
+    {
+      labels: ['wednesday', 'wed'],
+      days: ['wednesday'],
+    },
+    {
+      labels: ['thurs & fri', 'thursday & friday', 'thu & fri'],
+      days: ['thursday', 'friday'],
+    },
+    {
+      labels: ['saturday', 'sat'],
+      days: ['saturday'],
+    },
+    {
+      labels: ['sunday', 'sun'],
+      days: ['sunday'],
+    },
+  ];
+
+  // Find all timetable_content_inn divs within this container
+  // Each one has an h6 with the day label followed by p tags with times
+  $container.find('.timetable_content_inn').each((i, contentDiv) => {
+    const $contentDiv = $(contentDiv);
+
+    // Get the day label from h6
+    const dayLabel = $contentDiv
+      .find('h6')
+      .text()
+      .trim()
+      .toLowerCase()
+      .replace(/\*/g, '');
+
+    // Find which pattern this matches
+    let matchedDays = null;
     for (const pattern of dayPatterns) {
-      // Check if this heading matches any of the day labels
-      const normalizedText = text.toLowerCase().replace(/[&\s]+/g, ' ');
-      const matchesPattern = pattern.labels.some(label => {
-        const normalizedLabel = label.toLowerCase().replace(/[&\s]+/g, ' ');
-        return normalizedText.includes(normalizedLabel) || normalizedLabel.includes(normalizedText);
-      });
-      
-      if (matchesPattern) {
-        const times = [];
-        
-        // Find times in the next sibling elements (p tags that follow the h6)
-        // Look for p tags that are siblings of the h6 or within the same parent
-        let $timeContainer = $elem.parent();
-        if (!$timeContainer.length) {
-          $timeContainer = $elem.nextAll().first().parent();
-        }
-        
-        // Get all p tags that come after this h6 until the next h5/h6
-        const $nextSiblings = $elem.nextUntil('h5, h6');
-        $nextSiblings.filter('p').each((j, timeElem) => {
-          const $timeElem = $(timeElem);
-          const timeText = $timeElem.text().trim();
-          
-          // Skip if it's just a dash or empty
-          if (timeText === '-' || !timeText) return;
-          
-          // Match time patterns: "7:30 am", "10:00am", "12:30pm", etc.
-          const timeMatch = timeText.match(/(\d{1,2}):(\d{2})\s*(am|pm)/i);
-          if (timeMatch) {
-            const [, hour, minute, period] = timeMatch;
-            const hour24 = period.toUpperCase() === 'PM' && hour !== '12' 
-              ? parseInt(hour) + 12 
-              : period.toUpperCase() === 'AM' && hour === '12'
-              ? 0
-              : parseInt(hour);
-            const time24 = `${String(hour24).padStart(2, '0')}:${minute}`;
-            if (!times.includes(time24)) {
-              times.push(time24);
-            }
-          }
-        });
-        
-        // Also check within the parent container for p tags
-        if (times.length === 0) {
-          $timeContainer.find('p').each((j, timeElem) => {
-            const $timeElem = $(timeElem);
-            const timeText = $timeElem.text().trim();
-            
-            if (timeText === '-' || !timeText) return;
-            
-            const timeMatch = timeText.match(/(\d{1,2}):(\d{2})\s*(am|pm)/i);
-            if (timeMatch) {
-              const [, hour, minute, period] = timeMatch;
-              const hour24 = period.toUpperCase() === 'PM' && hour !== '12' 
-                ? parseInt(hour) + 12 
-                : period.toUpperCase() === 'AM' && hour === '12'
-                ? 0
-                : parseInt(hour);
-              const time24 = `${String(hour24).padStart(2, '0')}:${minute}`;
-              if (!times.includes(time24)) {
-                times.push(time24);
-              }
-            }
-          });
+      const normalizedLabel = dayLabel.replace(/[&\s]+/g, ' ').trim();
+      if (
+        pattern.labels.some((l) => {
+          const normalizedPattern = l.replace(/[&\s]+/g, ' ').trim();
+          return (
+            normalizedLabel.includes(normalizedPattern) ||
+            normalizedPattern.includes(normalizedLabel)
+          );
+        })
+      ) {
+        matchedDays = pattern.days;
+        break;
+      }
+    }
+
+    if (!matchedDays) {
+      return; // Skip if no matching day pattern
+    }
+
+    // Extract times from all p tags in this section
+    const times = [];
+    $contentDiv.find('p').each((j, timeElem) => {
+      const timeText = $(timeElem).text().trim();
+
+      // Skip dashes and empty
+      if (timeText === '-' || !timeText) return;
+
+      // Match time patterns: "7:30 am", "10:00am", "12:30pm", etc.
+      const timeMatch = timeText.match(/(\d{1,2}):(\d{2})\s*(am|pm)/i);
+      if (timeMatch) {
+        const [, hour, minute, period] = timeMatch;
+        let hour24 = parseInt(hour);
+
+        // Convert to 24-hour format
+        if (period.toLowerCase() === 'pm' && hour24 !== 12) {
+          hour24 += 12;
+        } else if (period.toLowerCase() === 'am' && hour24 === 12) {
+          hour24 = 0;
         }
 
-        // Convert times to sailing objects and add to ALL days in this pattern
-        // This ensures "Mon & Tues" applies to both Monday and Tuesday
-        // and "Thurs & Fri" applies to both Thursday and Friday
-        for (const time of times) {
-          const sailing = {
-            time: time,
-            company: 'Island Direct'
-          };
-          
-          // Add to all days in this pattern (e.g., both monday and tuesday for "Mon & Tues")
-          for (const day of pattern.days) {
-            // Check if this time already exists for this day
-            const exists = schedule[day].some(s => s.time === time);
-            if (!exists) {
-              schedule[day].push(sailing);
-            }
-          }
+        const time24 = `${String(hour24).padStart(2, '0')}:${minute}`;
+        if (!times.includes(time24)) {
+          times.push(time24);
+        }
+      }
+    });
+
+    // Add times to all matched days
+    for (const time of times) {
+      const sailing = {
+        time: time,
+        company: 'Island Direct',
+      };
+
+      for (const day of matchedDays) {
+        const exists = schedule[day].some((s) => s.time === time);
+        if (!exists) {
+          schedule[day].push(sailing);
         }
       }
     }
   });
 
-  // Fallback: search full text if no times found
-  if (Object.values(schedule).every(day => day.length === 0)) {
-    const fullText = $container.text();
-    
-    for (const pattern of dayPatterns) {
-      for (const label of pattern.labels) {
-        const labelRegex = new RegExp(label.replace(/[&\s]/g, '[\\s&]+'), 'i');
-        const labelMatch = fullText.search(labelRegex);
-        
-        if (labelMatch !== -1) {
-          // Extract a section of text around the day label
-          const sectionStart = Math.max(0, labelMatch);
-          const sectionEnd = Math.min(fullText.length, labelMatch + 2000);
-          const sectionText = fullText.substring(sectionStart, sectionEnd);
-          
-          // Find all times in this section
-          const timeMatches = [...sectionText.matchAll(/(\d{1,2}):(\d{2})\s*(am|pm)/gi)];
-          for (const match of timeMatches) {
-            const [, hour, minute, period] = match;
-            const hour24 = period.toUpperCase() === 'PM' && hour !== '12' 
-              ? parseInt(hour) + 12 
-              : period.toUpperCase() === 'AM' && hour === '12'
-              ? 0
-              : parseInt(hour);
-            const time24 = `${String(hour24).padStart(2, '0')}:${minute}`;
-            
-            const sailing = {
-              time: time24,
-              company: 'Island Direct'
-            };
-            
-            // Add to all days in this pattern
-            for (const day of pattern.days) {
-              const exists = schedule[day].some(s => s.time === time24);
-              if (!exists) {
-                schedule[day].push(sailing);
-              }
-            }
-          }
-          break;
-        }
-      }
-    }
-  }
-
   // Sort times for each day
   for (const day of Object.keys(schedule)) {
     schedule[day].sort((a, b) => {
-      const timeA = a.time.split(':').map(Number);
-      const timeB = b.time.split(':').map(Number);
-      return (timeA[0] * 60 + timeA[1]) - (timeB[0] * 60 + timeB[1]);
+      const [aH, aM] = a.time.split(':').map(Number);
+      const [bH, bM] = b.time.split(':').map(Number);
+      return aH * 60 + aM - (bH * 60 + bM);
     });
   }
 
@@ -277,4 +222,3 @@ function extractSchedule($, from, to) {
 
 // Run the scraper
 scrapeIslandDirect().catch(console.error);
-
