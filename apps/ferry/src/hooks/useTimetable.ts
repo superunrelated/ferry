@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { TimetableData } from '../types/timetable';
 
 export function useTimetable() {
@@ -18,19 +18,8 @@ export function useTimetable() {
 
         if (response?.ok) {
           const data = await response.json();
-          console.log(
-            'Timetable data loaded:',
-            data,
-            'routes:',
-            data?.routes?.length
-          );
           setTimetableData(data);
         } else {
-          console.log(
-            'Timetable response not ok:',
-            response?.status,
-            response?.statusText
-          );
           setError('Failed to load timetable data');
         }
       } catch (err) {
@@ -45,8 +34,10 @@ export function useTimetable() {
     loadTimetable();
   }, []);
 
-  const timetables: TimetableData[] = [];
-  if (timetableData) timetables.push(timetableData);
+  const timetables = useMemo(() => {
+    if (!timetableData) return [];
+    return [timetableData];
+  }, [timetableData]);
 
   return {
     timetables,

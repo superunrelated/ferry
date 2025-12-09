@@ -180,7 +180,6 @@ export function getRemainingSailingsToday(
       }
 
       for (const sailing of daySailings) {
-        // In data.json, all sailings are objects with time, company, and optional slow
         if (!sailing || typeof sailing !== 'object' || !sailing.time) {
           console.log('Skipping sailing - invalid format:', sailing);
           continue;

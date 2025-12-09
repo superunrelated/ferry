@@ -1,25 +1,27 @@
 import React from 'react';
 import { DayOfWeek } from '../../types/timetable';
 import { TimeSlot } from '../../utils/timetableData';
-import { TimetableHeader } from './TimetableHeader';
-import { TimetableRow } from './TimetableRow';
+import { TimetableHeader } from '../timetable/TimetableHeader';
+import { AdminTimetableRow } from './AdminTimetableRow';
 import { cva, vi } from '@ferry/ui';
+import { Location } from '../../types/timetable';
 
-export interface TimetableTableProps {
+export interface AdminTimetableTableProps {
   hourGroups: { hour: number; slots: TimeSlot[] }[];
   currentDayOfWeek: DayOfWeek;
   nextSailingTime: string | null;
   nextSailingRef: React.RefObject<HTMLTableRowElement>;
   currentDayHeaderRef: React.RefObject<HTMLTableCellElement>;
-  departureLocation?: string;
+  departureLocation: Location | null;
   filterCompany?: string;
+  onRemoveSailing: (time: string, day: DayOfWeek, sailingIndex: number) => void;
 }
 
 const tableBody = cva('divide-y divide-slate-700/30');
 const tableBodyVisionImpaired =
   'vision-impaired:divide-y-2 vision-impaired:divide-white';
 
-export function TimetableTable({
+export function AdminTimetableTable({
   hourGroups,
   currentDayOfWeek,
   nextSailingTime,
@@ -27,7 +29,8 @@ export function TimetableTable({
   currentDayHeaderRef,
   departureLocation,
   filterCompany,
-}: TimetableTableProps) {
+  onRemoveSailing,
+}: AdminTimetableTableProps) {
   const keyPrefix = `${departureLocation || ''}-${filterCompany || ''}`;
 
   return (
@@ -43,7 +46,7 @@ export function TimetableTable({
               const isFirstInHour = slotIndex === 0;
               const isNextSailing = slot.time === nextSailingTime;
               return (
-                <TimetableRow
+                <AdminTimetableRow
                   key={`${keyPrefix}-${slot.time}`}
                   slot={slot}
                   currentDayOfWeek={currentDayOfWeek}
@@ -51,6 +54,8 @@ export function TimetableTable({
                   isFirstInHour={isFirstInHour}
                   groupIndex={groupIndex}
                   nextSailingRef={isNextSailing ? nextSailingRef : null}
+                  departureLocation={departureLocation}
+                  onRemoveSailing={onRemoveSailing}
                 />
               );
             })}

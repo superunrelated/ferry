@@ -3,14 +3,17 @@ import { DayOfWeek } from '../../types/timetable';
 import { DAYS } from '../../utils/timetableConstants';
 import { TimeSlot } from '../../utils/timetableData';
 import { CompanyBadge, cva, vi } from '@ferry/ui';
+import { Location } from '../../types/timetable';
 
-export interface TimetableRowProps {
+export interface AdminTimetableRowProps {
   slot: TimeSlot;
   currentDayOfWeek: DayOfWeek;
   isNextSailing: boolean;
   isFirstInHour: boolean;
   groupIndex: number;
   nextSailingRef: React.RefObject<HTMLTableRowElement> | null;
+  departureLocation: Location | null;
+  onRemoveSailing: (time: string, day: DayOfWeek, sailingIndex: number) => void;
 }
 
 const tableRow = cva('group hover:bg-slate-800/20 transition-colors', {
@@ -56,14 +59,24 @@ const emptyCell = cva('text-slate-600');
 const emptyCellVisionImpaired =
   'vision-impaired:text-white vision-impaired:font-bold';
 
-export function TimetableRow({
+const removeButton = cva(
+  'ml-1.5 inline-flex items-center justify-center w-4 h-4 rounded-full bg-red-500/20 hover:bg-red-500/40 text-red-400 hover:text-red-300 text-[10px] font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-red-400'
+);
+const removeButtonVisionImpaired =
+  'vision-impaired:bg-red-600 vision-impaired:text-white vision-impaired:border-2 vision-impaired:border-white';
+
+export const AdminTimetableRow = React.memo(function AdminTimetableRow({
   slot,
   currentDayOfWeek,
   isNextSailing,
   isFirstInHour,
   groupIndex,
   nextSailingRef,
-}: TimetableRowProps) {
+  departureLocation,
+  onRemoveSailing,
+}: AdminTimetableRowProps) {
+  if (!departureLocation) return null;
+
   return (
     <tr
       ref={nextSailingRef}
@@ -92,13 +105,21 @@ export function TimetableRow({
             {daySailings.length > 0 ? (
               <div className="space-y-1.5">
                 {daySailings.map((sailing, idx) => (
-                  <CompanyBadge
-                    key={idx}
-                    company={sailing.company}
-                    slow={sailing.slow}
-                    variant="square"
-                    as="div"
-                  />
+                  <div key={idx} className="inline-flex items-center">
+                    <CompanyBadge
+                      company={sailing.company}
+                      slow={sailing.slow}
+                      variant="square"
+                      as="div"
+                    />
+                    <button
+                      onClick={() => onRemoveSailing(slot.time, day, idx)}
+                      className={vi(removeButton(), removeButtonVisionImpaired)}
+                      aria-label={`Remove ${sailing.company} sailing at ${slot.time}`}
+                    >
+                      ×
+                    </button>
+                  </div>
                 ))}
               </div>
             ) : (
@@ -111,4 +132,4 @@ export function TimetableRow({
       })}
     </tr>
   );
-}
+});

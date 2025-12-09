@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-23T05:54:56.131Z",
+  "lastUpdated": "2025-12-09T20:34:43.010Z",
   "routes": [
     {
       "from": "Auckland",
@@ -9,10 +9,6 @@
           {
             "time": "06:00",
             "company": "Fullers"
-          },
-          {
-            "time": "06:30",
-            "company": "Island Direct"
           },
           {
             "time": "06:45",
@@ -35,10 +31,6 @@
             "company": "Fullers"
           },
           {
-            "time": "08:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "09:00",
             "company": "Fullers",
             "slow": true
@@ -50,10 +42,6 @@
           {
             "time": "10:00",
             "company": "Fullers"
-          },
-          {
-            "time": "10:30",
-            "company": "Island Direct"
           },
           {
             "time": "11:00",
@@ -69,10 +57,6 @@
             "company": "Fullers"
           },
           {
-            "time": "12:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "13:00",
             "company": "Fullers",
             "slow": true
@@ -84,10 +68,6 @@
           {
             "time": "14:00",
             "company": "Fullers"
-          },
-          {
-            "time": "14:30",
-            "company": "Island Direct"
           },
           {
             "time": "15:00",
@@ -105,10 +85,6 @@
           {
             "time": "16:00",
             "company": "Fullers"
-          },
-          {
-            "time": "16:20",
-            "company": "Island Direct"
           },
           {
             "time": "16:30",
@@ -131,19 +107,11 @@
             "company": "Fullers"
           },
           {
-            "time": "18:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "19:15",
             "company": "Fullers"
           },
           {
             "time": "19:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "20:30",
             "company": "Island Direct"
           },
           {
@@ -157,10 +125,6 @@
           {
             "time": "22:15",
             "company": "Fullers"
-          },
-          {
-            "time": "22:30",
-            "company": "Island Direct"
           },
           {
             "time": "23:45",
@@ -173,10 +137,6 @@
             "company": "Fullers"
           },
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "06:45",
             "company": "Fullers"
           },
@@ -197,10 +157,6 @@
             "company": "Fullers"
           },
           {
-            "time": "08:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "09:00",
             "company": "Fullers",
             "slow": true
@@ -212,10 +168,6 @@
           {
             "time": "10:00",
             "company": "Fullers"
-          },
-          {
-            "time": "10:30",
-            "company": "Island Direct"
           },
           {
             "time": "11:00",
@@ -231,10 +183,6 @@
             "company": "Fullers"
           },
           {
-            "time": "12:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "13:00",
             "company": "Fullers",
             "slow": true
@@ -246,10 +194,6 @@
           {
             "time": "14:00",
             "company": "Fullers"
-          },
-          {
-            "time": "14:30",
-            "company": "Island Direct"
           },
           {
             "time": "15:00",
@@ -267,10 +211,6 @@
           {
             "time": "16:00",
             "company": "Fullers"
-          },
-          {
-            "time": "16:20",
-            "company": "Island Direct"
           },
           {
             "time": "16:30",
@@ -293,19 +233,11 @@
             "company": "Fullers"
           },
           {
-            "time": "18:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "19:15",
             "company": "Fullers"
           },
           {
             "time": "19:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "20:30",
             "company": "Island Direct"
           },
           {
@@ -319,10 +251,6 @@
           {
             "time": "22:15",
             "company": "Fullers"
-          },
-          {
-            "time": "22:30",
-            "company": "Island Direct"
           },
           {
             "time": "23:45",
@@ -335,10 +263,6 @@
             "company": "Fullers"
           },
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "06:45",
             "company": "Fullers"
           },
@@ -357,10 +281,6 @@
           {
             "time": "08:15",
             "company": "Fullers"
-          },
-          {
-            "time": "08:15",
-            "company": "Island Direct"
           },
           {
             "time": "09:00",
@@ -384,17 +304,9 @@
             "company": "Fullers"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
           },
           {
             "time": "11:30",
@@ -412,10 +324,6 @@
             "time": "13:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "13:30",
-            "company": "Island Direct"
           },
           {
             "time": "14:00",
@@ -441,10 +349,6 @@
           {
             "time": "16:00",
             "company": "Fullers"
-          },
-          {
-            "time": "16:20",
-            "company": "Island Direct"
           },
           {
             "time": "16:30",
@@ -497,10 +401,6 @@
           {
             "time": "22:15",
             "company": "Fullers"
-          },
-          {
-            "time": "22:30",
-            "company": "Island Direct"
           },
           {
             "time": "23:45",
@@ -513,10 +413,6 @@
             "company": "Fullers"
           },
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "06:45",
             "company": "Fullers"
           },
@@ -535,10 +431,6 @@
           {
             "time": "08:15",
             "company": "Fullers"
-          },
-          {
-            "time": "08:15",
-            "company": "Island Direct"
           },
           {
             "time": "09:00",
@@ -562,17 +454,9 @@
             "company": "Fullers"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
           },
           {
             "time": "11:30",
@@ -590,10 +474,6 @@
             "time": "13:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "13:30",
-            "company": "Island Direct"
           },
           {
             "time": "14:00",
@@ -619,10 +499,6 @@
           {
             "time": "16:00",
             "company": "Fullers"
-          },
-          {
-            "time": "16:20",
-            "company": "Island Direct"
           },
           {
             "time": "16:30",
@@ -678,10 +554,6 @@
           },
           {
             "time": "22:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "23:30",
             "company": "Island Direct"
           },
           {
@@ -695,10 +567,6 @@
             "company": "Fullers"
           },
           {
-            "time": "06:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "06:45",
             "company": "Fullers"
           },
@@ -717,10 +585,6 @@
           {
             "time": "08:15",
             "company": "Fullers"
-          },
-          {
-            "time": "08:15",
-            "company": "Island Direct"
           },
           {
             "time": "09:00",
@@ -744,17 +608,9 @@
             "company": "Fullers"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
           },
           {
             "time": "11:30",
@@ -772,10 +628,6 @@
             "time": "13:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "13:30",
-            "company": "Island Direct"
           },
           {
             "time": "14:00",
@@ -801,10 +653,6 @@
           {
             "time": "16:00",
             "company": "Fullers"
-          },
-          {
-            "time": "16:20",
-            "company": "Island Direct"
           },
           {
             "time": "16:30",
@@ -860,10 +708,6 @@
           },
           {
             "time": "22:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "23:30",
             "company": "Island Direct"
           },
           {
@@ -889,10 +733,6 @@
             "company": "Fullers"
           },
           {
-            "time": "08:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "09:00",
             "company": "Fullers",
             "slow": true
@@ -922,17 +762,9 @@
             "company": "Fullers"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
           },
           {
             "time": "11:30",
@@ -954,10 +786,6 @@
             "time": "13:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "13:30",
-            "company": "Island Direct"
           },
           {
             "time": "14:00",
@@ -987,10 +815,6 @@
           {
             "time": "16:00",
             "company": "Fullers"
-          },
-          {
-            "time": "16:20",
-            "company": "Island Direct"
           },
           {
             "time": "16:30",
@@ -1051,10 +875,6 @@
           },
           {
             "time": "22:30",
-            "company": "Island Direct"
-          },
-          {
-            "time": "23:30",
             "company": "Island Direct"
           },
           {
@@ -1076,10 +896,6 @@
             "company": "Fullers"
           },
           {
-            "time": "08:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "09:00",
             "company": "Fullers",
             "slow": true
@@ -1109,17 +925,9 @@
             "company": "Fullers"
           },
           {
-            "time": "10:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "11:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "11:00",
-            "company": "Island Direct"
           },
           {
             "time": "11:30",
@@ -1141,10 +949,6 @@
             "time": "13:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "13:30",
-            "company": "Island Direct"
           },
           {
             "time": "14:00",
@@ -1174,10 +978,6 @@
           {
             "time": "16:00",
             "company": "Fullers"
-          },
-          {
-            "time": "16:20",
-            "company": "Island Direct"
           },
           {
             "time": "16:30",
@@ -1235,10 +1035,6 @@
           {
             "time": "22:15",
             "company": "Fullers"
-          },
-          {
-            "time": "22:30",
-            "company": "Island Direct"
           }
         ]
       }
@@ -1269,10 +1065,6 @@
             "company": "Fullers"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:00",
             "company": "Fullers"
           },
@@ -1289,10 +1081,6 @@
             "company": "Fullers"
           },
           {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:00",
             "company": "Fullers",
             "slow": true
@@ -1304,10 +1092,6 @@
           {
             "time": "11:00",
             "company": "Fullers"
-          },
-          {
-            "time": "11:30",
-            "company": "Island Direct"
           },
           {
             "time": "12:00",
@@ -1323,10 +1107,6 @@
             "company": "Fullers"
           },
           {
-            "time": "13:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "14:00",
             "company": "Fullers",
             "slow": true
@@ -1338,10 +1118,6 @@
           {
             "time": "15:00",
             "company": "Fullers"
-          },
-          {
-            "time": "15:30",
-            "company": "Island Direct"
           },
           {
             "time": "16:00",
@@ -1365,10 +1141,6 @@
             "company": "Fullers"
           },
           {
-            "time": "17:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "18:00",
             "company": "Fullers"
           },
@@ -1385,10 +1157,6 @@
             "company": "Fullers"
           },
           {
-            "time": "19:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "20:00",
             "company": "Fullers"
           },
@@ -1399,10 +1167,6 @@
           {
             "time": "21:30",
             "company": "Fullers"
-          },
-          {
-            "time": "21:30",
-            "company": "Island Direct"
           },
           {
             "time": "22:30",
@@ -1435,10 +1199,6 @@
             "company": "Fullers"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:00",
             "company": "Fullers"
           },
@@ -1455,10 +1215,6 @@
             "company": "Fullers"
           },
           {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:00",
             "company": "Fullers",
             "slow": true
@@ -1470,10 +1226,6 @@
           {
             "time": "11:00",
             "company": "Fullers"
-          },
-          {
-            "time": "11:30",
-            "company": "Island Direct"
           },
           {
             "time": "12:00",
@@ -1489,10 +1241,6 @@
             "company": "Fullers"
           },
           {
-            "time": "13:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "14:00",
             "company": "Fullers",
             "slow": true
@@ -1504,10 +1252,6 @@
           {
             "time": "15:00",
             "company": "Fullers"
-          },
-          {
-            "time": "15:30",
-            "company": "Island Direct"
           },
           {
             "time": "16:00",
@@ -1531,10 +1275,6 @@
             "company": "Fullers"
           },
           {
-            "time": "17:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "18:00",
             "company": "Fullers"
           },
@@ -1551,10 +1291,6 @@
             "company": "Fullers"
           },
           {
-            "time": "19:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "20:00",
             "company": "Fullers"
           },
@@ -1565,10 +1301,6 @@
           {
             "time": "21:30",
             "company": "Fullers"
-          },
-          {
-            "time": "21:30",
-            "company": "Island Direct"
           },
           {
             "time": "22:30",
@@ -1601,10 +1333,6 @@
             "company": "Fullers"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:00",
             "company": "Fullers"
           },
@@ -1621,17 +1349,9 @@
             "company": "Fullers"
           },
           {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "10:00",
-            "company": "Island Direct"
           },
           {
             "time": "10:30",
@@ -1643,10 +1363,6 @@
           },
           {
             "time": "11:00",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:30",
             "company": "Island Direct"
           },
           {
@@ -1672,10 +1388,6 @@
             "slow": true
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:00",
             "company": "Fullers"
           },
@@ -1695,10 +1407,6 @@
           {
             "time": "16:30",
             "company": "Fullers"
-          },
-          {
-            "time": "16:30",
-            "company": "Island Direct"
           },
           {
             "time": "17:00",
@@ -1783,10 +1491,6 @@
             "company": "Fullers"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:00",
             "company": "Fullers"
           },
@@ -1803,17 +1507,9 @@
             "company": "Fullers"
           },
           {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "10:00",
-            "company": "Island Direct"
           },
           {
             "time": "10:30",
@@ -1825,10 +1521,6 @@
           },
           {
             "time": "11:00",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:30",
             "company": "Island Direct"
           },
           {
@@ -1854,10 +1546,6 @@
             "slow": true
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:00",
             "company": "Fullers"
           },
@@ -1877,10 +1565,6 @@
           {
             "time": "16:30",
             "company": "Fullers"
-          },
-          {
-            "time": "16:30",
-            "company": "Island Direct"
           },
           {
             "time": "17:00",
@@ -1969,10 +1653,6 @@
             "company": "Fullers"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:00",
             "company": "Fullers"
           },
@@ -1989,17 +1669,9 @@
             "company": "Fullers"
           },
           {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:00",
             "company": "Fullers",
             "slow": true
-          },
-          {
-            "time": "10:00",
-            "company": "Island Direct"
           },
           {
             "time": "10:30",
@@ -2011,10 +1683,6 @@
           },
           {
             "time": "11:00",
-            "company": "Island Direct"
-          },
-          {
-            "time": "11:30",
             "company": "Island Direct"
           },
           {
@@ -2040,10 +1708,6 @@
             "slow": true
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:00",
             "company": "Fullers"
           },
@@ -2063,10 +1727,6 @@
           {
             "time": "16:30",
             "company": "Fullers"
-          },
-          {
-            "time": "16:30",
-            "company": "Island Direct"
           },
           {
             "time": "17:00",
@@ -2143,10 +1803,6 @@
             "company": "Fullers"
           },
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:00",
             "company": "Fullers"
           },
@@ -2159,19 +1815,11 @@
             "company": "Fullers"
           },
           {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:00",
             "company": "Fullers",
             "slow": true
           },
           {
-            "time": "10:00",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:30",
             "company": "Fullers"
           },
@@ -2190,10 +1838,6 @@
           {
             "time": "11:30",
             "company": "Fullers"
-          },
-          {
-            "time": "11:30",
-            "company": "Island Direct"
           },
           {
             "time": "12:00",
@@ -2222,10 +1866,6 @@
             "slow": true
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:00",
             "company": "Fullers"
           },
@@ -2249,10 +1889,6 @@
           {
             "time": "16:30",
             "company": "Fullers"
-          },
-          {
-            "time": "16:30",
-            "company": "Island Direct"
           },
           {
             "time": "17:00",
@@ -2326,10 +1962,6 @@
         ],
         "sunday": [
           {
-            "time": "07:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "08:00",
             "company": "Fullers"
           },
@@ -2342,19 +1974,11 @@
             "company": "Fullers"
           },
           {
-            "time": "09:15",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:00",
             "company": "Fullers",
             "slow": true
           },
           {
-            "time": "10:00",
-            "company": "Island Direct"
-          },
-          {
             "time": "10:30",
             "company": "Fullers"
           },
@@ -2373,10 +1997,6 @@
           {
             "time": "11:30",
             "company": "Fullers"
-          },
-          {
-            "time": "11:30",
-            "company": "Island Direct"
           },
           {
             "time": "12:00",
@@ -2405,10 +2025,6 @@
             "slow": true
           },
           {
-            "time": "14:30",
-            "company": "Island Direct"
-          },
-          {
             "time": "15:00",
             "company": "Fullers"
           },
@@ -2432,10 +2048,6 @@
           {
             "time": "16:30",
             "company": "Fullers"
-          },
-          {
-            "time": "16:30",
-            "company": "Island Direct"
           },
           {
             "time": "17:00",

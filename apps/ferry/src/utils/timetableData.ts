@@ -27,12 +27,18 @@ export function buildTimeSlots(
 
   for (const timetable of timetables) {
     for (const route of timetable.routes) {
-      if (route.from !== departureLocation) continue;
+      if (route.from !== departureLocation) {
+        continue;
+      }
 
       for (const day of DAYS) {
         const daySailings = route.schedule[day] || [];
         for (const sailing of daySailings) {
           if (!sailing.time) continue;
+
+          if (filterCompany !== 'all' && sailing.company !== filterCompany) {
+            continue;
+          }
 
           const timeInMinutes = parseTime(sailing.time);
           let timeSlot = timeSlotMap.get(sailing.time);
@@ -63,20 +69,11 @@ export function buildTimeSlots(
   const timeSlots = Array.from(timeSlotMap.values());
   timeSlots.sort((a, b) => a.timeInMinutes - b.timeInMinutes);
 
-  if (filterCompany !== 'all') {
-    for (const slot of timeSlots) {
-      for (const day of DAYS) {
-        slot.sailings[day] = slot.sailings[day].filter(
-          (s) => s.company === filterCompany
-        );
-      }
-    }
-    return timeSlots.filter((slot) =>
-      DAYS.some((day) => slot.sailings[day].length > 0)
-    );
-  }
+  const filteredTimeSlots = timeSlots.filter((slot) =>
+    DAYS.some((day) => slot.sailings[day].length > 0)
+  );
 
-  return timeSlots;
+  return filteredTimeSlots;
 }
 
 export function findNextSailingTime(
