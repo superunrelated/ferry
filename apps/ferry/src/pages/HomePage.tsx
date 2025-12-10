@@ -54,7 +54,10 @@ export function HomePage() {
           ) : remainingSailings.length === 0 ? (
             <NoSailingsState />
           ) : (
-            <SailingsTable groupedSailings={groupedSailings} />
+            <SailingsTable
+              groupedSailings={groupedSailings}
+              departureLocation={departureLocation}
+            />
           )}
         </div>
       </div>

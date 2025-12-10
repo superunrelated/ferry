@@ -1,9 +1,11 @@
 import { Card, CardContent, cva, vi } from '@ferry/ui';
 import { GroupedSailing } from '../../hooks/useGroupedSailings';
 import { SailingsTableRow } from './SailingsTableRow';
+import { Location } from '../../types/timetable';
 
 interface SailingsTableProps {
   groupedSailings: GroupedSailing[];
+  departureLocation: Location | null;
 }
 
 const tableHead = cva('bg-slate-800/30');
@@ -20,7 +22,10 @@ const tableBody = cva('divide-y divide-slate-700/50');
 const tableBodyVisionImpaired =
   'vision-impaired:divide-y-2 vision-impaired:divide-white';
 
-export function SailingsTable({ groupedSailings }: SailingsTableProps) {
+export function SailingsTable({
+  groupedSailings,
+  departureLocation,
+}: SailingsTableProps) {
   return (
     <Card className="h-full flex flex-col">
       <CardContent scrollable className="flex-1">
@@ -45,6 +50,7 @@ export function SailingsTable({ groupedSailings }: SailingsTableProps) {
                 key={`${group.time}-${index}`}
                 group={group}
                 index={index}
+                departureLocation={departureLocation}
               />
             ))}
           </tbody>

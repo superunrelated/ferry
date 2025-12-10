@@ -1,8 +1,9 @@
 import React from 'react';
-import { DayOfWeek } from '../../types/timetable';
+import { DayOfWeek, Location } from '../../types/timetable';
 import { DAYS } from '../../utils/timetableConstants';
 import { TimeSlot } from '../../utils/timetableData';
-import { CompanyBadge, cva, vi } from '@ferry/ui';
+import { CompanyBadge, cva, vi, useTimeFormatContext } from '@ferry/ui';
+import { getBookingUrl } from '../../utils/booking';
 
 export interface TimetableRowProps {
   slot: TimeSlot;
@@ -11,6 +12,7 @@ export interface TimetableRowProps {
   isFirstInHour: boolean;
   groupIndex: number;
   nextSailingRef: React.RefObject<HTMLTableRowElement> | null;
+  departureLocation?: Location;
 }
 
 const tableRow = cva('group hover:bg-slate-800/20 transition-colors', {
@@ -63,13 +65,18 @@ export function TimetableRow({
   isFirstInHour,
   groupIndex,
   nextSailingRef,
+  departureLocation,
 }: TimetableRowProps) {
+  const { formatTime } = useTimeFormatContext();
+
   return (
     <tr
       ref={nextSailingRef}
       className={tableRow({ hasBorder: isFirstInHour && groupIndex > 0 })}
     >
-      <td className={vi(timeCell(), timeCellVisionImpaired)}>{slot.time}</td>
+      <td className={vi(timeCell(), timeCellVisionImpaired)}>
+        {formatTime(slot.time)}
+      </td>
       {DAYS.map((day) => {
         const daySailings = slot.sailings[day];
         const isCurrentDay = day === currentDayOfWeek;
@@ -98,6 +105,10 @@ export function TimetableRow({
                     slow={sailing.slow}
                     variant="square"
                     as="div"
+                    bookingUrl={getBookingUrl(
+                      sailing.company,
+                      departureLocation
+                    )}
                   />
                 ))}
               </div>

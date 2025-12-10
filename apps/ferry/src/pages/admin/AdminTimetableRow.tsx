@@ -1,9 +1,9 @@
 import React from 'react';
-import { DayOfWeek } from '../../types/timetable';
+import { DayOfWeek, Location } from '../../types/timetable';
 import { DAYS } from '../../utils/timetableConstants';
 import { TimeSlot } from '../../utils/timetableData';
-import { CompanyBadge, cva, vi } from '@ferry/ui';
-import { Location } from '../../types/timetable';
+import { CompanyBadge, cva, vi, useTimeFormatContext } from '@ferry/ui';
+import { getBookingUrl } from '../../utils/booking';
 
 export interface AdminTimetableRowProps {
   slot: TimeSlot;
@@ -75,6 +75,8 @@ export const AdminTimetableRow = React.memo(function AdminTimetableRow({
   departureLocation,
   onRemoveSailing,
 }: AdminTimetableRowProps) {
+  const { formatTime } = useTimeFormatContext();
+
   if (!departureLocation) return null;
 
   return (
@@ -82,7 +84,9 @@ export const AdminTimetableRow = React.memo(function AdminTimetableRow({
       ref={nextSailingRef}
       className={tableRow({ hasBorder: isFirstInHour && groupIndex > 0 })}
     >
-      <td className={vi(timeCell(), timeCellVisionImpaired)}>{slot.time}</td>
+      <td className={vi(timeCell(), timeCellVisionImpaired)}>
+        {formatTime(slot.time)}
+      </td>
       {DAYS.map((day) => {
         const daySailings = slot.sailings[day];
         const isCurrentDay = day === currentDayOfWeek;
@@ -111,6 +115,10 @@ export const AdminTimetableRow = React.memo(function AdminTimetableRow({
                       slow={sailing.slow}
                       variant="square"
                       as="div"
+                      bookingUrl={getBookingUrl(
+                        sailing.company,
+                        departureLocation
+                      )}
                     />
                     <button
                       onClick={() => onRemoveSailing(slot.time, day, idx)}

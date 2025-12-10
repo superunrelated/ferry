@@ -6,6 +6,7 @@ export interface CompanyBadgeProps {
   slow?: boolean;
   variant?: 'rounded' | 'square';
   as?: 'span' | 'div';
+  bookingUrl?: string;
 }
 
 const badge = cva('inline-flex items-center text-xs font-semibold', {
@@ -45,8 +46,35 @@ export function CompanyBadge({
   slow = false,
   variant = 'rounded',
   as: Component = 'span',
+  bookingUrl,
 }: CompanyBadgeProps) {
   const companyKey = company === 'Fullers' ? 'fullers' : 'island-direct';
+
+  const content = (
+    <>
+      {company}
+      {slow && company === 'Fullers' && (
+        <span className={vi(asterisk(), asteriskVisionImpaired)}>*</span>
+      )}
+    </>
+  );
+
+  if (bookingUrl) {
+    return (
+      <a
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={vi(
+          badge({ variant, company: companyKey }),
+          badgeVisionImpaired({ company: companyKey }),
+          'hover:opacity-80 transition-opacity cursor-pointer'
+        )}
+      >
+        {content}
+      </a>
+    );
+  }
 
   return (
     <Component
@@ -55,10 +83,7 @@ export function CompanyBadge({
         badgeVisionImpaired({ company: companyKey })
       )}
     >
-      {company}
-      {slow && company === 'Fullers' && (
-        <span className={vi(asterisk(), asteriskVisionImpaired)}>*</span>
-      )}
+      {content}
     </Component>
   );
 }

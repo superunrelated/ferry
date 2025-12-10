@@ -3,9 +3,11 @@ import { LocationToggle } from './LocationToggle';
 import { CompanyFilter } from './CompanyFilter';
 import { TabNavigation } from './TabNavigation';
 import { VisionImpairedToggle } from './VisionImpairedToggle';
+import { TimeFormatToggle } from './TimeFormatToggle';
 import { FerryCompany, Location } from '../types/timetable';
 import { FilterProvider, FilterContextValue } from './FilterContext';
 import { useVisionImpaired } from '../hooks/useVisionImpaired';
+import { useTimeFormat, TimeFormatProvider } from '../hooks/useTimeFormat';
 import { cva, vi } from '../utils/visionImpaired';
 
 export interface PageTemplateProps {
@@ -39,41 +41,48 @@ export function PageTemplate({
     setFilterCompany,
   };
   const { isVisionImpaired, toggleVisionImpaired } = useVisionImpaired();
+  const timeFormatValue = useTimeFormat();
 
   return (
     <FilterProvider value={filterValue}>
-      <div className={vi(pageContainer(), pageContainerVisionImpaired)}>
-        <TabNavigation />
-        <div className="px-4 py-2 shrink-0">
-          <div className="max-w-7xl mx-auto">
-            <div className="space-y-2">
-              <LocationToggle
-                value={departureLocation}
-                onChange={(loc) => setDepartureLocation(loc)}
-              />
-              <CompanyFilter
-                value={filterCompany}
-                onChange={setFilterCompany}
-              />
+      <TimeFormatProvider value={timeFormatValue}>
+        <div className={vi(pageContainer(), pageContainerVisionImpaired)}>
+          <TabNavigation />
+          <div className="px-4 py-2 shrink-0">
+            <div className="max-w-7xl mx-auto">
+              <div className="space-y-2">
+                <LocationToggle
+                  value={departureLocation}
+                  onChange={(loc) => setDepartureLocation(loc)}
+                />
+                <CompanyFilter
+                  value={filterCompany}
+                  onChange={setFilterCompany}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 overflow-hidden">{children}</div>
+          <div className="p-1 pt-0 shrink-0">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex items-center justify-center gap-3 px-4 py-2">
+                <p className={vi(footerText(), footerTextVisionImpaired)}>
+                  *Sailing via Devonport. Approximately 10 minutes longer than
+                  other sailings.
+                </p>
+                <TimeFormatToggle
+                  timeFormat={timeFormatValue.timeFormat}
+                  onToggle={timeFormatValue.toggleTimeFormat}
+                />
+                <VisionImpairedToggle
+                  isVisionImpaired={isVisionImpaired}
+                  onToggle={toggleVisionImpaired}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex-1 overflow-hidden">{children}</div>
-        <div className="p-1 pt-0 shrink-0">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-center gap-3 px-4 py-2">
-              <p className={vi(footerText(), footerTextVisionImpaired)}>
-                *Sailing via Devonport. Approximately 10 minutes longer than
-                other sailings.
-              </p>
-              <VisionImpairedToggle
-                isVisionImpaired={isVisionImpaired}
-                onToggle={toggleVisionImpaired}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      </TimeFormatProvider>
     </FilterProvider>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { DayOfWeek } from '../../types/timetable';
+import { DayOfWeek, Location } from '../../types/timetable';
 import { TimeSlot } from '../../utils/timetableData';
 import { TimetableHeader } from './TimetableHeader';
 import { TimetableRow } from './TimetableRow';
@@ -11,7 +11,7 @@ export interface TimetableTableProps {
   nextSailingTime: string | null;
   nextSailingRef: React.RefObject<HTMLTableRowElement>;
   currentDayHeaderRef: React.RefObject<HTMLTableCellElement>;
-  departureLocation?: string;
+  departureLocation?: Location;
   filterCompany?: string;
 }
 
@@ -51,6 +51,7 @@ export function TimetableTable({
                   isFirstInHour={isFirstInHour}
                   groupIndex={groupIndex}
                   nextSailingRef={isNextSailing ? nextSailingRef : null}
+                  departureLocation={departureLocation}
                 />
               );
             })}

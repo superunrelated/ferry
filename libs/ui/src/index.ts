@@ -10,5 +10,7 @@ export * from './lib/components/Card';
 export * from './lib/components/PageTemplate';
 export * from './lib/components/FilterContext';
 export * from './lib/components/VisionImpairedToggle';
+export * from './lib/components/TimeFormatToggle';
 export * from './lib/types/timetable';
 export * from './lib/utils/visionImpaired';
+export * from './lib/hooks/useTimeFormat';
